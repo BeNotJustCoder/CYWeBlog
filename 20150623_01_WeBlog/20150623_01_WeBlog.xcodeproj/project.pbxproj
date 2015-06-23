@@ -12,6 +12,11 @@
 		BE789FC01B3918EF00E4C189 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE789FBE1B3918EF00E4C189 /* LaunchScreen.storyboard */; };
 		BE789FCB1B3918EF00E4C189 /* _0150623_01_WeBlogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FCA1B3918EF00E4C189 /* _0150623_01_WeBlogTests.swift */; };
 		BE789FD61B3918EF00E4C189 /* _0150623_01_WeBlogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FD51B3918EF00E4C189 /* _0150623_01_WeBlogUITests.swift */; };
+		BE789FEE1B3945F400E4C189 /* DiscoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FED1B3945F400E4C189 /* DiscoverTableViewController.swift */; };
+		BE789FF01B39460700E4C189 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FEF1B39460700E4C189 /* HomeTableViewController.swift */; };
+		BE789FF41B39462300E4C189 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FF31B39462300E4C189 /* MessageTableViewController.swift */; };
+		BE789FF61B39462E00E4C189 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FF51B39462E00E4C189 /* ProfileTableViewController.swift */; };
+		BEC0B4F81B39908000376F86 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0B4F71B39908000376F86 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +48,11 @@
 		BE789FD11B3918EF00E4C189 /* 20150623_01_WeBlogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 20150623_01_WeBlogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE789FD51B3918EF00E4C189 /* _0150623_01_WeBlogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _0150623_01_WeBlogUITests.swift; sourceTree = "<group>"; };
 		BE789FD71B3918EF00E4C189 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE789FED1B3945F400E4C189 /* DiscoverTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewController.swift; sourceTree = "<group>"; };
+		BE789FEF1B39460700E4C189 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		BE789FF31B39462300E4C189 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
+		BE789FF51B39462E00E4C189 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		BEC0B4F71B39908000376F86 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,9 +148,9 @@
 		BE789FE51B39441200E4C189 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				BE789FE81B39441200E4C189 /* Main */,
 				BE789FE61B39441200E4C189 /* Discover */,
 				BE789FE71B39441200E4C189 /* Home */,
-				BE789FE81B39441200E4C189 /* Main */,
 				BE789FE91B39441200E4C189 /* Message */,
 				BE789FEA1B39441200E4C189 /* Profile */,
 			);
@@ -150,6 +160,7 @@
 		BE789FE61B39441200E4C189 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				BE789FED1B3945F400E4C189 /* DiscoverTableViewController.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -157,6 +168,7 @@
 		BE789FE71B39441200E4C189 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				BE789FEF1B39460700E4C189 /* HomeTableViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -164,6 +176,7 @@
 		BE789FE81B39441200E4C189 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				BEC0B4F71B39908000376F86 /* MainViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -171,6 +184,7 @@
 		BE789FE91B39441200E4C189 /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				BE789FF31B39462300E4C189 /* MessageTableViewController.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -178,6 +192,7 @@
 		BE789FEA1B39441200E4C189 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				BE789FF51B39462E00E4C189 /* ProfileTableViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -328,6 +343,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE789FF61B39462E00E4C189 /* ProfileTableViewController.swift in Sources */,
+				BE789FF01B39460700E4C189 /* HomeTableViewController.swift in Sources */,
+				BE789FF41B39462300E4C189 /* MessageTableViewController.swift in Sources */,
+				BEC0B4F81B39908000376F86 /* MainViewController.swift in Sources */,
+				BE789FEE1B3945F400E4C189 /* DiscoverTableViewController.swift in Sources */,
 				BE789FB61B3918EF00E4C189 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,6 +567,7 @@
 				BE789FDC1B3918EF00E4C189 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE789FDD1B3918EF00E4C189 /* Build configuration list for PBXNativeTarget "20150623_01_WeBlogTests" */ = {
 			isa = XCConfigurationList;
@@ -555,6 +576,7 @@
 				BE789FDF1B3918EF00E4C189 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE789FE01B3918EF00E4C189 /* Build configuration list for PBXNativeTarget "20150623_01_WeBlogUITests" */ = {
 			isa = XCConfigurationList;
@@ -563,6 +585,7 @@
 				BE789FE21B3918EF00E4C189 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
