@@ -24,6 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    private func setupApperance() {
+        UITabBar.appearance().tintColor = UIColor.orangeColor()
+        UINavigationBar.appearance().tintColor = UIColor.orangeColor()
+    }
+    
     
 
 }

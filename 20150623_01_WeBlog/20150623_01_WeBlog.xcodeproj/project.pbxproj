@@ -17,6 +17,7 @@
 		BE789FF41B39462300E4C189 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FF31B39462300E4C189 /* MessageTableViewController.swift */; };
 		BE789FF61B39462E00E4C189 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FF51B39462E00E4C189 /* ProfileTableViewController.swift */; };
 		BEC0B4F81B39908000376F86 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0B4F71B39908000376F86 /* MainViewController.swift */; };
+		BEC0B4FC1B39A5C100376F86 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0B4FB1B39A5C100376F86 /* MainTabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,7 @@
 
 /* Begin PBXFileReference section */
 		BE789FB21B3918EF00E4C189 /* 20150623_01_WeBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 20150623_01_WeBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE789FB51B3918EF00E4C189 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BE789FB51B3918EF00E4C189 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		BE789FBC1B3918EF00E4C189 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE789FBF1B3918EF00E4C189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE789FC11B3918EF00E4C189 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,6 +54,7 @@
 		BE789FF31B39462300E4C189 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		BE789FF51B39462E00E4C189 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		BEC0B4F71B39908000376F86 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		BEC0B4FB1B39A5C100376F86 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,9 +105,8 @@
 		BE789FB41B3918EF00E4C189 /* 20150623_01_WeBlog */ = {
 			isa = PBXGroup;
 			children = (
-				BE789FEC1B39446000E4C189 /* Support */,
 				BE789FE31B39441200E4C189 /* Classes */,
-				BE789FB51B3918EF00E4C189 /* AppDelegate.swift */,
+				BE789FEC1B39446000E4C189 /* Support */,
 			);
 			path = 20150623_01_WeBlog;
 			sourceTree = "<group>";
@@ -131,6 +132,7 @@
 		BE789FE31B39441200E4C189 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				BE789FB51B3918EF00E4C189 /* AppDelegate.swift */,
 				BE789FE41B39441200E4C189 /* Modle */,
 				BE789FE51B39441200E4C189 /* Module */,
 				BE789FEB1B39441200E4C189 /* Tools */,
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				BEC0B4F71B39908000376F86 /* MainViewController.swift */,
+				BEC0B4FB1B39A5C100376F86 /* MainTabBar.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 			files = (
 				BE789FF61B39462E00E4C189 /* ProfileTableViewController.swift in Sources */,
 				BE789FF01B39460700E4C189 /* HomeTableViewController.swift in Sources */,
+				BEC0B4FC1B39A5C100376F86 /* MainTabBar.swift in Sources */,
 				BE789FF41B39462300E4C189 /* MessageTableViewController.swift in Sources */,
 				BEC0B4F81B39908000376F86 /* MainViewController.swift in Sources */,
 				BE789FEE1B3945F400E4C189 /* DiscoverTableViewController.swift in Sources */,
@@ -482,6 +486,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = 20150623_01_WeBlog/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lincy.-0150623-01-WeBlog";
@@ -493,6 +498,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = 20150623_01_WeBlog/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lincy.-0150623-01-WeBlog";
