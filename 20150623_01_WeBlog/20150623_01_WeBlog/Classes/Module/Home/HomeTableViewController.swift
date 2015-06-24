@@ -8,12 +8,12 @@
 
 import UIKit
 
-class HomeTableViewController: UITableViewController {
+class HomeTableViewController: BaseModuleViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.yellowColor()
+//        view.backgroundColor = UIColor.yellowColor()
     }
 
 

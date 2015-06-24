@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BE181E3E1B3A54FF00D1953C /* ControllersSetting.json in Resources */ = {isa = PBXBuildFile; fileRef = BE181E3D1B3A54FF00D1953C /* ControllersSetting.json */; };
+		BE181E401B3A8B7A00D1953C /* BaseModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE181E3F1B3A8B7A00D1953C /* BaseModuleViewController.swift */; };
+		BE181E421B3A8C2900D1953C /* VisitorLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE181E411B3A8C2900D1953C /* VisitorLoginView.swift */; };
 		BE789FB61B3918EF00E4C189 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FB51B3918EF00E4C189 /* AppDelegate.swift */; };
 		BE789FBD1B3918EF00E4C189 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE789FBC1B3918EF00E4C189 /* Assets.xcassets */; };
 		BE789FCB1B3918EF00E4C189 /* _0150623_01_WeBlogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FCA1B3918EF00E4C189 /* _0150623_01_WeBlogTests.swift */; };
@@ -39,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		BE181E3D1B3A54FF00D1953C /* ControllersSetting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ControllersSetting.json; sourceTree = "<group>"; };
+		BE181E3F1B3A8B7A00D1953C /* BaseModuleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleViewController.swift; sourceTree = "<group>"; };
+		BE181E411B3A8C2900D1953C /* VisitorLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorLoginView.swift; sourceTree = "<group>"; };
 		BE789FB21B3918EF00E4C189 /* 20150623_01_WeBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 20150623_01_WeBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE789FB51B3918EF00E4C189 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		BE789FBC1B3918EF00E4C189 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 				BEC0B4F71B39908000376F86 /* MainViewController.swift */,
 				BEC0B4FB1B39A5C100376F86 /* MainTabBar.swift */,
 				BE181E3D1B3A54FF00D1953C /* ControllersSetting.json */,
+				BE181E3F1B3A8B7A00D1953C /* BaseModuleViewController.swift */,
+				BE181E411B3A8C2900D1953C /* VisitorLoginView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -347,11 +353,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE789FF61B39462E00E4C189 /* ProfileTableViewController.swift in Sources */,
+				BE181E401B3A8B7A00D1953C /* BaseModuleViewController.swift in Sources */,
 				BE789FF01B39460700E4C189 /* HomeTableViewController.swift in Sources */,
 				BEC0B4FC1B39A5C100376F86 /* MainTabBar.swift in Sources */,
 				BE789FF41B39462300E4C189 /* MessageTableViewController.swift in Sources */,
 				BEC0B4F81B39908000376F86 /* MainViewController.swift in Sources */,
 				BE789FEE1B3945F400E4C189 /* DiscoverTableViewController.swift in Sources */,
+				BE181E421B3A8C2900D1953C /* VisitorLoginView.swift in Sources */,
 				BE789FB61B3918EF00E4C189 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

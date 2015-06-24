@@ -8,12 +8,12 @@
 
 import UIKit
 
-class MessageTableViewController: UITableViewController {
+class MessageTableViewController: BaseModuleViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.blueColor()
+//        view.backgroundColor = UIColor.blueColor()
     }
 
 }

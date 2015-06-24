@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ProfileTableViewController: UITableViewController {
+class ProfileTableViewController: BaseModuleViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.greenColor()
+//        view.backgroundColor = UIColor.greenColor()
     }
 
 }

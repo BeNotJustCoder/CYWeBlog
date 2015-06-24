@@ -8,11 +8,11 @@
 
 import UIKit
 
-class DiscoverTableViewController: UITableViewController {
+class DiscoverTableViewController: BaseModuleViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.redColor()
+//        view.backgroundColor = UIColor.redColor()
     }
 
 
