@@ -1,0 +1,20 @@
+[{
+    "vcName":"HomeTableViewController",
+    "vcTitle":"首页",
+    "vcItemImage":"tabbar_home"
+},
+{
+    "vcName":"MessageTableViewController",
+    "vcTitle":"消息",
+    "vcItemImage":"tabbar_message_center"
+},
+{
+    "vcName":"DiscoverTableViewController",
+    "vcTitle":"发现",
+    "vcItemImage":"tabbar_discover"
+},
+{
+    "vcName":"ProfileTableViewController",
+    "vcTitle":"我",
+    "vcItemImage":"tabbar_profile"
+}]

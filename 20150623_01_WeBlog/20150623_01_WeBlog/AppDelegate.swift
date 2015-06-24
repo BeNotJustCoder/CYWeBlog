@@ -21,15 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = MainViewController()
         window?.makeKeyAndVisible()
         
+        setupApperance()
         return true
     }
     
+    /// 设置全局外观
     private func setupApperance() {
         UITabBar.appearance().tintColor = UIColor.orangeColor()
         UINavigationBar.appearance().tintColor = UIColor.orangeColor()
     }
-    
-    
 
 }
 

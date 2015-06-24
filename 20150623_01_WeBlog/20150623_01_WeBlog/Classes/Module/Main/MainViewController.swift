@@ -19,29 +19,51 @@ class MainViewController: UITabBarController {
         setValue(tabBar, forKey: "tabBar")
     }
     
+    
+    /// 设置子控制器
     private func setupControllers() {
-        var vc:UIViewController = HomeTableViewController()
-        vc.title = "首页"
-        vc.tabBarItem.image = UIImage(imageLiteral: "tabbar_home")
-        var nav = UINavigationController(rootViewController: vc)
-        addChildViewController(nav)
         
-        vc = MessageTableViewController()
-        vc.title = "消息"
-        vc.tabBarItem.image = UIImage(imageLiteral: "tabbar_message_center")
-        nav = UINavigationController(rootViewController: vc)
-        addChildViewController(nav)
+        var data:NSData?
+        let url = NSBundle.mainBundle().URLForResource("ControllersSetting.json", withExtension: nil)
+        do {
+            data = try NSData(contentsOfURL: url!, options: NSDataReadingOptions.DataReadingUncached)
+        }
+        catch {
+            print(error)
+        }
+ 
+        do {
+            let array = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
+            for dict in array as! [[String:String]] {
+                print(dict)
+                setupSubController(dict["vcName"]!, vcTitle: dict["vcTitle"]!, vcItemImg: dict["vcItemImage"]!)
+            }
+        }
+        catch {
+            print(error)
+            setupSubController("HomeTableViewController", vcTitle: "首页", vcItemImg: "tabbar_home")
+            setupSubController("MessageTableViewController", vcTitle: "消息", vcItemImg: "tabbar_message_center")
+            setupSubController("DiscoverTableViewController", vcTitle: "发现", vcItemImg: "tabbar_discover")
+            setupSubController("ProfileTableViewController", vcTitle: "我", vcItemImg: "tabbar_profile")
+        }
         
-        vc = DiscoverTableViewController()
-        vc.title = "发现"
-        vc.tabBarItem.image = UIImage(imageLiteral: "tabbar_discover")
-        nav = UINavigationController(rootViewController: vc)
-        addChildViewController(nav)
+    }
+    
+    private func setupSubController(vcName:String, vcTitle:String, vcItemImg:String) {
+//        print(NSBundle.mainBundle().infoDictionary)
         
-        vc = ProfileTableViewController()
-        vc.title = "我"
-        vc.tabBarItem.image = UIImage(imageLiteral: "tabbar_profile")
-        nav = UINavigationController(rootViewController: vc)
+        let namespace = NSBundle.mainBundle().infoDictionary!["CFBundleExecutable"] as! String
+        print(namespace)
+        let clsName = "_0150623_01_WeBlog"+"."+vcName
+        let cls:AnyClass = NSClassFromString(clsName)!
+        
+//        print(cls)
+        let vc:UIViewController = cls.alloc() as! UIViewController
+        
+//        let vc:UIViewController = HomeTableViewController()
+        vc.title = vcTitle
+        vc.tabBarItem.image = UIImage(imageLiteral: vcItemImg)
+        let nav = UINavigationController(rootViewController: vc)
         addChildViewController(nav)
     }
 

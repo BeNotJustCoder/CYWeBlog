@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE181E3E1B3A54FF00D1953C /* ControllersSetting.json in Resources */ = {isa = PBXBuildFile; fileRef = BE181E3D1B3A54FF00D1953C /* ControllersSetting.json */; };
 		BE789FB61B3918EF00E4C189 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FB51B3918EF00E4C189 /* AppDelegate.swift */; };
 		BE789FBD1B3918EF00E4C189 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE789FBC1B3918EF00E4C189 /* Assets.xcassets */; };
-		BE789FC01B3918EF00E4C189 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE789FBE1B3918EF00E4C189 /* LaunchScreen.storyboard */; };
 		BE789FCB1B3918EF00E4C189 /* _0150623_01_WeBlogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FCA1B3918EF00E4C189 /* _0150623_01_WeBlogTests.swift */; };
 		BE789FD61B3918EF00E4C189 /* _0150623_01_WeBlogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FD51B3918EF00E4C189 /* _0150623_01_WeBlogUITests.swift */; };
 		BE789FEE1B3945F400E4C189 /* DiscoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FED1B3945F400E4C189 /* DiscoverTableViewController.swift */; };
@@ -38,10 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE181E3D1B3A54FF00D1953C /* ControllersSetting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ControllersSetting.json; sourceTree = "<group>"; };
 		BE789FB21B3918EF00E4C189 /* 20150623_01_WeBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 20150623_01_WeBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE789FB51B3918EF00E4C189 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		BE789FBC1B3918EF00E4C189 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BE789FBF1B3918EF00E4C189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE789FC11B3918EF00E4C189 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE789FC61B3918EF00E4C189 /* 20150623_01_WeBlogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 20150623_01_WeBlogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE789FCA1B3918EF00E4C189 /* _0150623_01_WeBlogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _0150623_01_WeBlogTests.swift; sourceTree = "<group>"; };
@@ -180,6 +180,7 @@
 			children = (
 				BEC0B4F71B39908000376F86 /* MainViewController.swift */,
 				BEC0B4FB1B39A5C100376F86 /* MainTabBar.swift */,
+				BE181E3D1B3A54FF00D1953C /* ControllersSetting.json */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -211,7 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				BE789FBC1B3918EF00E4C189 /* Assets.xcassets */,
-				BE789FBE1B3918EF00E4C189 /* LaunchScreen.storyboard */,
 				BE789FC11B3918EF00E4C189 /* Info.plist */,
 			);
 			name = Support;
@@ -320,7 +320,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE789FC01B3918EF00E4C189 /* LaunchScreen.storyboard in Resources */,
+				BE181E3E1B3A54FF00D1953C /* ControllersSetting.json in Resources */,
 				BE789FBD1B3918EF00E4C189 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,17 +386,6 @@
 			targetProxy = BE789FD21B3918EF00E4C189 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		BE789FBE1B3918EF00E4C189 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BE789FBF1B3918EF00E4C189 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BE789FD81B3918EF00E4C189 /* Debug */ = {
@@ -488,6 +477,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = 20150623_01_WeBlog/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lincy.-0150623-01-WeBlog";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -500,6 +490,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = 20150623_01_WeBlog/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lincy.-0150623-01-WeBlog";
 				PRODUCT_NAME = "$(TARGET_NAME)";
