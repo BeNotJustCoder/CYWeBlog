@@ -92,6 +92,7 @@ class NewFeatureCollectionViewCell : UICollectionViewCell{
         btn.setBackgroundImage(UIImage(named: "new_feature_finish_button"), forState: UIControlState.Normal)
         btn.setBackgroundImage(UIImage(named: "new_feature_finish_button_highlighted"), forState: UIControlState.Highlighted)
         btn.addTarget(self, action: "onStartBtnClicked", forControlEvents: UIControlEvents.TouchUpInside)
+        self.addSubview(btn)
         
         return btn
     }()
@@ -106,8 +107,7 @@ class NewFeatureCollectionViewCell : UICollectionViewCell{
         super.init(frame: frame)
         
         backgroundView = imageView
-        
-        self.addSubview(startBtn)
+    
         
         startBtn.hidden = true
         
@@ -125,7 +125,6 @@ class NewFeatureCollectionViewCell : UICollectionViewCell{
     override func layoutSubviews() {
         super.layoutSubviews()
     }
-    
     
     
     func showStartBtn() {

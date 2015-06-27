@@ -12,6 +12,7 @@
 		BE181E401B3A8B7A00D1953C /* BaseModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE181E3F1B3A8B7A00D1953C /* BaseModuleViewController.swift */; };
 		BE181E421B3A8C2900D1953C /* VisitorLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE181E411B3A8C2900D1953C /* VisitorLoginView.swift */; };
 		BE4E31061B3E9BB60092F62F /* NewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E31051B3E9BB60092F62F /* NewFeatureViewController.swift */; };
+		BE4E31081B3EEEA20092F62F /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E31071B3EEEA20092F62F /* WelcomeViewController.swift */; };
 		BE789FB61B3918EF00E4C189 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FB51B3918EF00E4C189 /* AppDelegate.swift */; };
 		BE789FBD1B3918EF00E4C189 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE789FBC1B3918EF00E4C189 /* Assets.xcassets */; };
 		BE789FCB1B3918EF00E4C189 /* _0150623_01_WeBlogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FCA1B3918EF00E4C189 /* _0150623_01_WeBlogTests.swift */; };
@@ -52,6 +53,7 @@
 		BE181E3F1B3A8B7A00D1953C /* BaseModuleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleViewController.swift; sourceTree = "<group>"; };
 		BE181E411B3A8C2900D1953C /* VisitorLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorLoginView.swift; sourceTree = "<group>"; };
 		BE4E31051B3E9BB60092F62F /* NewFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewFeatureViewController.swift; path = NewFeature/NewFeatureViewController.swift; sourceTree = "<group>"; };
+		BE4E31071B3EEEA20092F62F /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		BE789FB21B3918EF00E4C189 /* WeBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE789FB51B3918EF00E4C189 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		BE789FBC1B3918EF00E4C189 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				BE4E31051B3E9BB60092F62F /* NewFeatureViewController.swift */,
+				BE4E31071B3EEEA20092F62F /* WelcomeViewController.swift */,
 			);
 			name = NewFeature;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				BE789FEE1B3945F400E4C189 /* DiscoverTableViewController.swift in Sources */,
 				BE181E421B3A8C2900D1953C /* VisitorLoginView.swift in Sources */,
 				BE789FB61B3918EF00E4C189 /* AppDelegate.swift in Sources */,
+				BE4E31081B3EEEA20092F62F /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
