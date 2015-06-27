@@ -12,7 +12,9 @@ class DiscoverTableViewController: BaseModuleViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = UIColor.redColor()
+
+        visitorView?.setVisitorViewInfo("visitordiscover_feed_image_house", message: "登录后，最新、最热微博尽在掌握，不再会与实事潮流擦肩而过", isHome: false)
+        
     }
 
 

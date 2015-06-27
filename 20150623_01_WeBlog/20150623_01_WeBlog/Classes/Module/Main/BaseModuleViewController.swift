@@ -21,24 +21,33 @@ class BaseModuleViewController: UITableViewController {
         else {
             setupVisitorView()
             
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: UIBarButtonItemStyle.Plain, target: self, action: "onRegisterBtnClicked")
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: UIBarButtonItemStyle.Plain, target: self, action: "onLoginBtnClicked")
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: UIBarButtonItemStyle.Plain, target: self, action: "onLeftBarBtnClicked")
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: UIBarButtonItemStyle.Plain, target: self, action: "onRightBarBtnClicked")
+
         }
     }
+    
+//    func setNavBarItemTitle(leftTitle:String, rightTitle:String) {
+//        navigationItem.leftBarButtonItem?.title = leftTitle
+//        navigationItem.rightBarButtonItem?.title = rightTitle
+//    }
 
     func setupVisitorView() {
         visitorView = VisitorLoginView()
-        visitorView?.backgroundColor = UIColor.blueColor()
+//        visitorView?.backgroundColor = UIColor.blueColor()
         view = visitorView
     }
     
     
-    func onRegisterBtnClicked() {
+    func onLeftBarBtnClicked() {
         print("注册")
     }
 
-    func onLoginBtnClicked() {
+    func onRightBarBtnClicked() {
         print("登录")
+        let oauthVc = OAuthViewController()
+        let nav = UINavigationController(rootViewController: oauthVc)
+        
+        presentViewController(nav, animated: true, completion: nil)
     }
-
 }

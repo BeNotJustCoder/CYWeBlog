@@ -35,7 +35,6 @@ class MainViewController: UITabBarController {
         do {
             let array = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
             for dict in array as! [[String:String]] {
-                print(dict)
                 setupSubController(dict["vcName"]!, vcTitle: dict["vcTitle"]!, vcItemImg: dict["vcItemImage"]!)
             }
         }
@@ -52,17 +51,23 @@ class MainViewController: UITabBarController {
     private func setupSubController(vcName:String, vcTitle:String, vcItemImg:String) {
 //        print(NSBundle.mainBundle().infoDictionary)
         
+        
         let namespace = NSBundle.mainBundle().infoDictionary!["CFBundleExecutable"] as! String
-        print(namespace)
-        let clsName = "_0150623_01_WeBlog"+"."+vcName
+//        print(namespace) //这种方法获得的包名为: 20150623_01_WeBlog  跟我的项目名一样
+//       
+//        
+//        let str = self.description
+//        let namespace = NSString(string:str.stringByDeletingPathExtension).substringFromIndex(1)
+//        print(namespace) //这种方法获得的包名为: _0150623_01_WeBlog  是实际运行时的包名
+        
+        let clsName = "\(namespace).\(vcName)"
         let cls:AnyClass = NSClassFromString(clsName)!
         
-//        print(cls)
         let vc:UIViewController = cls.alloc() as! UIViewController
         
-//        let vc:UIViewController = HomeTableViewController()
         vc.title = vcTitle
         vc.tabBarItem.image = UIImage(imageLiteral: vcItemImg)
+        
         let nav = UINavigationController(rootViewController: vc)
         addChildViewController(nav)
     }
