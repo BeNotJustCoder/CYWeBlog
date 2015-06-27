@@ -29,6 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupNetwork()
         
         setupApperance()
+        
+        let isUpdate = isAppUpdate()
+        print("是否更新: \(isUpdate)")
         return true
     }
     
@@ -51,6 +54,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if notification.object as! Bool == true {
             window?.rootViewController = MainViewController()
         }
+    }
+    
+    /// 是否新版本
+    private func isAppUpdate() -> Bool {
+        
+        // 1. 获取应用程序`当前版本`
+        let currentVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
+        let version = Double(currentVersion)//NSNumberFormatter().numberFromString(currentVersion)!.doubleValue
+        print(version)
+        
+        // 2. 获取应用程序`之前的版本`，从用户偏好中读取
+        let versionKey = "versionKey"
+        let preVersion = NSUserDefaults.standardUserDefaults().doubleForKey(versionKey)
+        print(preVersion)
+        
+        // 3. 将`当前版本`写入用户偏好
+        NSUserDefaults.standardUserDefaults().setDouble(version!, forKey: versionKey)
+        
+        return version > preVersion
     }
 
 }
