@@ -11,6 +11,7 @@
 		BE181E3E1B3A54FF00D1953C /* ControllersSetting.json in Resources */ = {isa = PBXBuildFile; fileRef = BE181E3D1B3A54FF00D1953C /* ControllersSetting.json */; };
 		BE181E401B3A8B7A00D1953C /* BaseModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE181E3F1B3A8B7A00D1953C /* BaseModuleViewController.swift */; };
 		BE181E421B3A8C2900D1953C /* VisitorLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE181E411B3A8C2900D1953C /* VisitorLoginView.swift */; };
+		BE4E31061B3E9BB60092F62F /* NewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E31051B3E9BB60092F62F /* NewFeatureViewController.swift */; };
 		BE789FB61B3918EF00E4C189 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FB51B3918EF00E4C189 /* AppDelegate.swift */; };
 		BE789FBD1B3918EF00E4C189 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE789FBC1B3918EF00E4C189 /* Assets.xcassets */; };
 		BE789FCB1B3918EF00E4C189 /* _0150623_01_WeBlogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FCA1B3918EF00E4C189 /* _0150623_01_WeBlogTests.swift */; };
@@ -50,6 +51,7 @@
 		BE181E3D1B3A54FF00D1953C /* ControllersSetting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ControllersSetting.json; sourceTree = "<group>"; };
 		BE181E3F1B3A8B7A00D1953C /* BaseModuleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleViewController.swift; sourceTree = "<group>"; };
 		BE181E411B3A8C2900D1953C /* VisitorLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorLoginView.swift; sourceTree = "<group>"; };
+		BE4E31051B3E9BB60092F62F /* NewFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewFeatureViewController.swift; path = NewFeature/NewFeatureViewController.swift; sourceTree = "<group>"; };
 		BE789FB21B3918EF00E4C189 /* WeBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE789FB51B3918EF00E4C189 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		BE789FBC1B3918EF00E4C189 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,6 +106,14 @@
 				028BFE973C49CF2795B5FE54 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		BE4E31041B3E9B2A0092F62F /* NewFeature */ = {
+			isa = PBXGroup;
+			children = (
+				BE4E31051B3E9BB60092F62F /* NewFeatureViewController.swift */,
+			);
+			name = NewFeature;
 			sourceTree = "<group>";
 		};
 		BE789FA91B3918EE00E4C189 = {
@@ -177,6 +187,7 @@
 		BE789FE51B39441200E4C189 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				BE4E31041B3E9B2A0092F62F /* NewFeature */,
 				BE85DB2B1B3C271A00DA7B62 /* OAuth */,
 				BE789FE81B39441200E4C189 /* Main */,
 				BE789FE71B39441200E4C189 /* Home */,
@@ -450,6 +461,7 @@
 				BEDA79731B3DB2B0003E4DD0 /* NetworkTools.swift in Sources */,
 				BE181E401B3A8B7A00D1953C /* BaseModuleViewController.swift in Sources */,
 				BE789FF01B39460700E4C189 /* HomeTableViewController.swift in Sources */,
+				BE4E31061B3E9BB60092F62F /* NewFeatureViewController.swift in Sources */,
 				BEC0B4FC1B39A5C100376F86 /* MainTabBar.swift in Sources */,
 				BE85DB2D1B3C283500DA7B62 /* OAuthViewController.swift in Sources */,
 				BE789FF41B39462300E4C189 /* MessageTableViewController.swift in Sources */,

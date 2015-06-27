@@ -11,10 +11,10 @@ import SVProgressHUD
 
 class OAuthViewController: UIViewController,UIWebViewDelegate {
     
-    private var ClientID = "4158259006"
-    private var RedirectURI = "http://benotjustcoder.github.io"
+    private var ClientID = "3267255111"//"4158259006"
+    private var RedirectURI = "https://www.baidu.com"//"http://benotjustcoder.github.io"
     private var RedirectURIs = "https://benotjustcoder.github.io"
-    private var ClientSecret = "2772be19049affc3a91faa7cf177048a"
+    private var ClientSecret = "cab3771effb9a2dd9a81c2d59c150bb2"//"2772be19049affc3a91faa7cf177048a"
     
     lazy var webView:UIWebView = {
         let webView = UIWebView()
@@ -94,11 +94,14 @@ class OAuthViewController: UIViewController,UIWebViewDelegate {
              ]
         
         NetworkTools.sharedNetworkTools().POST(urlString, parameters: param, success: { (_, jsonData) -> Void in
-            
+            print(jsonData)
             UserAccount(dict:jsonData as! [String : AnyObject]).loadUserInfo({ (account, error) -> () in
-                
-                print(account)
-                print(error)
+                if account != nil {
+                    print(account)
+                }
+                else {
+                    print(error)
+                }
             })
             
             

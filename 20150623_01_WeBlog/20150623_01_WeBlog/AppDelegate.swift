@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,8 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
-        window?.rootViewController = MainViewController()
+        window?.rootViewController = NewFeatureViewController()//MainViewController()
         window?.makeKeyAndVisible()
+        
+        // 注册通知
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "switchViewController:", name: SwitchRootVCNotification, object: nil)
+        
+        //设置网络
+        setupNetwork()
         
         setupApperance()
         return true
@@ -29,6 +36,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupApperance() {
         UITabBar.appearance().tintColor = UIColor.orangeColor()
         UINavigationBar.appearance().tintColor = UIColor.orangeColor()
+    }
+    
+    /// 设置网络
+    private func setupNetwork() {
+        // 设置网路指示器
+        AFNetworkActivityIndicatorManager.sharedManager().enabled = true
+        // 设置网络缓存
+        let urlCache = NSURLCache(memoryCapacity: 4 * 1024 * 1024, diskCapacity: 20 * 1024 * 1024, diskPath: nil)
+        NSURLCache.setSharedURLCache(urlCache)
+    }
+    
+    func switchViewController(notification:NSNotification) {
+        if notification.object as! Bool == true {
+            window?.rootViewController = MainViewController()
+        }
     }
 
 }

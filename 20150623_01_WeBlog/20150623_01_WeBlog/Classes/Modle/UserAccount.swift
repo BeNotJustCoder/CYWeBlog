@@ -58,8 +58,10 @@ class UserAccount: NSObject,NSCoding {
     }
     
     
-    func loadUserInfo(finished:(account:UserAccount, error:NSError?) -> ()) {
-        let params = ["access_token": access_token, "uid": uid]
+    func loadUserInfo(finished:(account:UserAccount?, error:NSError?) -> ()) {
+        
+        let params = ["uid": uid,
+            "access_token": access_token]
         
         NetworkTools.sharedNetworkTools().GET("2/users/show.json", parameters: params, success: { (_, jsonData) -> Void in
             print(jsonData)
@@ -75,7 +77,7 @@ class UserAccount: NSObject,NSCoding {
             
             }) { (_, error) -> Void in
                 print(error)
-                finished(account: self,error: error)
+                finished(account: nil,error: error)
         }
         
     }
