@@ -8,11 +8,13 @@
 
 import UIKit
 
+var shareUserAccount = UserAccount.loadAccount()
+
 class UserAccount: NSObject,NSCoding {
     
     /// 用于调用access_token，接口获取授权后的access token
     var access_token: String
-    /// access_token的生命周期，单位是秒数(实际是数值！)
+    /// access_token的生命周期，单位是秒数(实际是数值！)5
     var expires_in: NSTimeInterval
     
     /// 过期日期
@@ -39,6 +41,7 @@ class UserAccount: NSObject,NSCoding {
     
     /// 从沙盒中读取
     class func loadAccount() -> UserAccount? {
+//        return nil
         
         if let account = NSKeyedUnarchiver.unarchiveObjectWithFile(accountFilePath) as? UserAccount {
             // 判断日期是否过期，根当前系统时间进行`比较`，低于当前系统时间，就认为过期

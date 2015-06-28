@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
-        window?.rootViewController = WelcomeViewController()//NewFeatureViewController()//MainViewController()
+        window?.rootViewController = defaultRootViewController()
         window?.makeKeyAndVisible()
         
         // 注册通知
@@ -50,6 +50,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSURLCache.setSharedURLCache(urlCache)
     }
     
+    func defaultRootViewController()->UIViewController {
+        if isAppUpdate() {
+            return NewFeatureViewController()
+        }
+        return shareUserAccount != nil ?  WelcomeViewController() : MainViewController()
+    }
+    
     func switchViewController(notification:NSNotification) {
         if notification.object as! Bool == true {
             window?.rootViewController = MainViewController()
@@ -61,18 +68,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 1. 获取应用程序`当前版本`
         let currentVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
-        let version = Double(currentVersion)//NSNumberFormatter().numberFromString(currentVersion)!.doubleValue
-        print(version)
+        print(currentVersion)
         
         // 2. 获取应用程序`之前的版本`，从用户偏好中读取
-        let versionKey = "versionKey"
-        let preVersion = NSUserDefaults.standardUserDefaults().doubleForKey(versionKey)
+        let versionKey = "preVersion"
+        let preVersion = NSUserDefaults.standardUserDefaults().objectForKey(versionKey)
         print(preVersion)
         
         // 3. 将`当前版本`写入用户偏好
-        NSUserDefaults.standardUserDefaults().setDouble(version!, forKey: versionKey)
+        NSUserDefaults.standardUserDefaults().setObject(currentVersion, forKey: versionKey)
         
-        return version > preVersion
+        if preVersion == nil {
+            return true
+        }
+        
+        return currentVersion != preVersion as! String
     }
 
 }
