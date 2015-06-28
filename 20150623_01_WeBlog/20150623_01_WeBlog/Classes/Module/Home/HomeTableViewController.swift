@@ -65,6 +65,15 @@ class HomeTableViewController: BaseModuleViewController {
     func onTitleNavBtnClicked(btn:HomeTitleNavButton) {
         btn.imageView?.transform = isSelected ? CGAffineTransformMakeRotation(CGFloat(M_PI)) : CGAffineTransformMakeRotation(0)
         isSelected = !isSelected
+        
+        presentTitlePopoverView()
+    }
+    
+    private func presentTitlePopoverView() {
+        let sb = UIStoryboard(name: "TitlePopoverViewController", bundle: nil)
+        let vc = sb.instantiateViewControllerWithIdentifier("TitlePopoverViewControllerSB")
+        
+        presentViewController(vc, animated: true, completion: nil)
     }
 
 }
