@@ -9,6 +9,7 @@
 import UIKit
 
 class HomeTableViewController: BaseModuleViewController {
+    var isTitlePresenting:Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,8 +83,60 @@ class HomeTableViewController: BaseModuleViewController {
 
 }
 
-extension HomeTableViewController : UIViewControllerTransitioningDelegate {
+extension HomeTableViewController : UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
+    
+    
     func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
         return PopoverPresentationController(presentedViewController: presented,presentingViewController: presenting);
+    }
+    
+    
+    // 指定负责转场动画的控制器
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        isTitlePresenting = true
+        return self
+    }
+    
+    //指定撤销的动画
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        isTitlePresenting = false
+        return self
+    }
+    
+    // 转场动画时长
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+        return 0.4
+    }
+    
+    // 自定义转场动画
+    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+        let toView = transitionContext.viewForKey(UITransitionContextToViewKey)
+        
+        if isTitlePresenting {
+            
+            toView?.layer.anchorPoint = CGPointMake(0.5, 0)
+            
+            transitionContext.containerView()?.addSubview(toView!)
+            
+            toView?.transform = CGAffineTransformMakeScale(1, 0)
+            
+            UIView.animateWithDuration(transitionDuration(transitionContext), delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+                toView?.transform = CGAffineTransformIdentity
+                }) { (_) -> Void in
+                    transitionContext.completeTransition(true)
+            }
+        }
+        else {
+            //动画不起作用？
+            UIView.animateWithDuration(transitionDuration(transitionContext), animations: { () -> Void in
+                toView?.transform = CGAffineTransformMakeScale(1, 0)
+                }, completion: { (_) -> Void in
+                    toView?.removeFromSuperview()
+                    transitionContext.completeTransition(true)
+                    print("animation stop")
+            })
+            
+        }
+        
     }
 }
