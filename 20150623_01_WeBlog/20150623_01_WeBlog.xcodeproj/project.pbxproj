@@ -22,6 +22,7 @@
 		BE789FF41B39462300E4C189 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FF31B39462300E4C189 /* MessageTableViewController.swift */; };
 		BE789FF61B39462E00E4C189 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FF51B39462E00E4C189 /* ProfileTableViewController.swift */; };
 		BE85DB2D1B3C283500DA7B62 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE85DB2C1B3C283500DA7B62 /* OAuthViewController.swift */; };
+		BEA9DFA01B3FF22700143EA4 /* HomeTitleNavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA9DF9F1B3FF22700143EA4 /* HomeTitleNavButton.swift */; };
 		BEC0B4F81B39908000376F86 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0B4F71B39908000376F86 /* MainViewController.swift */; };
 		BEC0B4FC1B39A5C100376F86 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0B4FB1B39A5C100376F86 /* MainTabBar.swift */; };
 		BEDA79731B3DB2B0003E4DD0 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDA79721B3DB2B0003E4DD0 /* NetworkTools.swift */; };
@@ -69,6 +70,7 @@
 		BE789FF31B39462300E4C189 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		BE789FF51B39462E00E4C189 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		BE85DB2C1B3C283500DA7B62 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
+		BEA9DF9F1B3FF22700143EA4 /* HomeTitleNavButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTitleNavButton.swift; sourceTree = "<group>"; };
 		BEC0B4F71B39908000376F86 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BEC0B4FB1B39A5C100376F86 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		BEDA79721B3DB2B0003E4DD0 /* NetworkTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				BE789FEF1B39460700E4C189 /* HomeTableViewController.swift */,
+				BEA9DF9F1B3FF22700143EA4 /* HomeTitleNavButton.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				BE181E401B3A8B7A00D1953C /* BaseModuleViewController.swift in Sources */,
 				BE789FF01B39460700E4C189 /* HomeTableViewController.swift in Sources */,
 				BE4E31061B3E9BB60092F62F /* NewFeatureViewController.swift in Sources */,
+				BEA9DFA01B3FF22700143EA4 /* HomeTitleNavButton.swift in Sources */,
 				BEC0B4FC1B39A5C100376F86 /* MainTabBar.swift in Sources */,
 				BE85DB2D1B3C283500DA7B62 /* OAuthViewController.swift in Sources */,
 				BE789FF41B39462300E4C189 /* MessageTableViewController.swift in Sources */,

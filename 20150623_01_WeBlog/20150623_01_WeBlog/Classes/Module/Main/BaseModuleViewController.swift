@@ -15,6 +15,10 @@ class BaseModuleViewController: UITableViewController {
     var visitorView:VisitorLoginView?
     
     override func loadView() {
+        
+//        isUserLogin = shareUserAccount != nil
+        isUserLogin = true
+        
         if isUserLogin == true {
             super.loadView()
         }
