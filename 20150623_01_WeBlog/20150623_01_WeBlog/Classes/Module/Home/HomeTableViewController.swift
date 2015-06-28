@@ -73,7 +73,17 @@ class HomeTableViewController: BaseModuleViewController {
         let sb = UIStoryboard(name: "TitlePopoverViewController", bundle: nil)
         let vc = sb.instantiateViewControllerWithIdentifier("TitlePopoverViewControllerSB")
         
+        //设置转场代理和转场模式
+        vc.transitioningDelegate = self
+        vc.modalPresentationStyle = UIModalPresentationStyle.Custom
+        
         presentViewController(vc, animated: true, completion: nil)
     }
 
+}
+
+extension HomeTableViewController : UIViewControllerTransitioningDelegate {
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
+        return PopoverPresentationController(presentedViewController: presented,presentingViewController: presenting);
+    }
 }
