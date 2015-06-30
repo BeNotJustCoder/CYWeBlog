@@ -16,7 +16,9 @@ class HomeTableViewController: BaseModuleViewController {
 
         visitorView?.setVisitorViewInfo("visitordiscover_feed_image_house", message: "关注一些人，回到这里看看有什么惊喜", isHome: true)
         
-        setupNavigationBar()
+        if isUserLogin {
+            setupNavigationBar()
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -33,42 +35,44 @@ class HomeTableViewController: BaseModuleViewController {
     
     lazy var leftNavBtn:UIButton = {
         let btn = UIButton()
-        btn.frame = CGRectMake(0, 0, 30, 30)
+//        btn.frame = CGRectMake(0, 0, 30, 30)
         btn.setImage(UIImage(named: "navigationbar_friendsearch"), forState: UIControlState.Normal);
         btn.setImage(UIImage(named: "navigationbar_friendsearch_highlighted"), forState: UIControlState.Highlighted)
+        btn.sizeToFit()
         
         return btn
     }()
     
     lazy var rightNavBtn:UIButton = {
         let btn = UIButton()
-        btn.frame = CGRectMake(0, 0, 30, 30)
+//        btn.frame = CGRectMake(0, 0, 30, 30)
         btn.setImage(UIImage(named: "navigationbar_pop"), forState: UIControlState.Normal);
         btn.setImage(UIImage(named: "navigationbar_pop_highlighted"), forState: UIControlState.Highlighted)
-        
+        btn.addTarget(self, action: "presentQRscanViewController", forControlEvents: UIControlEvents.TouchUpInside)
+        btn.sizeToFit()
         return btn
     }()
     
     lazy var titleNavBtn:UIButton = {
-        let userName = "用户名"//shareUserAccount!.name!
+        let userName = shareUserAccount!.name!
+        
         let btn = HomeTitleNavButton()
-        btn.frame = CGRectMake(0, 0, 10, 30)
         btn.setTitle(userName + " ", forState: UIControlState.Normal)
         btn.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
         btn.setBackgroundImage(UIImage(named: "timeline_card_middle_background_highlighted"), forState: UIControlState.Highlighted)
-//        btn.setBackgroundImage(UIImage(named: "timeline_card_middle_background"), forState: UIControlState.Normal)
+        btn.sizeToFit()
+        
         btn.setImage(UIImage(named: "navigationbar_arrow_down"), forState: UIControlState.Normal)
         btn.addTarget(self, action: "onTitleNavBtnClicked:", forControlEvents: UIControlEvents.TouchUpInside)
         return btn
     }()
     
-    private var isSelected:Bool = false
     func onTitleNavBtnClicked(btn:HomeTitleNavButton) {
-        btn.imageView?.transform = isSelected ? CGAffineTransformMakeRotation(CGFloat(M_PI)) : CGAffineTransformMakeRotation(0)
-        isSelected = !isSelected
+        btn.imageView?.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
         
         presentTitlePopoverView()
     }
+    
     
     private func presentTitlePopoverView() {
         let sb = UIStoryboard(name: "TitlePopoverViewController", bundle: nil)
@@ -80,8 +84,17 @@ class HomeTableViewController: BaseModuleViewController {
         
         presentViewController(vc, animated: true, completion: nil)
     }
+    
+    //二维码扫描视图
+    func presentQRscanViewController() {
+        let sb = UIStoryboard(name: "QRCodeViewController", bundle: nil)
+        let qrVc = sb.instantiateInitialViewController()!
+        
+        presentViewController(qrVc, animated: true, completion: nil)
+    }
 
 }
+
 
 extension HomeTableViewController : UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
     
@@ -105,12 +118,13 @@ extension HomeTableViewController : UIViewControllerTransitioningDelegate, UIVie
     
     // 转场动画时长
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 0.4
+        return 0.5
     }
     
     // 自定义转场动画
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         let toView = transitionContext.viewForKey(UITransitionContextToViewKey)
+        print(toView)
         
         if isTitlePresenting {
             
@@ -127,13 +141,13 @@ extension HomeTableViewController : UIViewControllerTransitioningDelegate, UIVie
             }
         }
         else {
+//            let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)
             //动画不起作用？
             UIView.animateWithDuration(transitionDuration(transitionContext), animations: { () -> Void in
                 toView?.transform = CGAffineTransformMakeScale(1, 0)
                 }, completion: { (_) -> Void in
-                    toView?.removeFromSuperview()
                     transitionContext.completeTransition(true)
-                    print("animation stop")
+                    self.titleNavBtn.imageView?.transform = CGAffineTransformMakeRotation(0)
             })
             
         }

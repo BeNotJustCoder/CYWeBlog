@@ -16,8 +16,7 @@ class BaseModuleViewController: UITableViewController {
     
     override func loadView() {
         
-//        isUserLogin = shareUserAccount != nil
-        isUserLogin = true
+        isUserLogin = shareUserAccount != nil
         
         if isUserLogin == true {
             super.loadView()
@@ -38,7 +37,6 @@ class BaseModuleViewController: UITableViewController {
 
     func setupVisitorView() {
         visitorView = VisitorLoginView()
-//        visitorView?.backgroundColor = UIColor.blueColor()
         view = visitorView
     }
     

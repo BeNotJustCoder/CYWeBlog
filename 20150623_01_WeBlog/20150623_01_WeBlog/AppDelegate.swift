@@ -84,6 +84,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return currentVersion != preVersion as! String
     }
+    
+    deinit {
+        //注销通知
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: SwitchRootVCNotification, object: nil)
+    }
 
 }
 

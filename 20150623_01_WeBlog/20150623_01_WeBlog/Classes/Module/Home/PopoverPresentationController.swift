@@ -14,6 +14,7 @@ class PopoverPresentationController: UIPresentationController {
         let view = UIView()
         view.backgroundColor = UIColor(white: 0, alpha: 0.2)
         view.frame = self.containerView!.bounds
+//        view.frame.origin.y = 56
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "onTapDummyView"))
         
