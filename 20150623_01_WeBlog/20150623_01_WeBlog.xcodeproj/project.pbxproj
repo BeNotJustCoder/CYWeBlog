@@ -31,6 +31,8 @@
 		BEC0B4FC1B39A5C100376F86 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC0B4FB1B39A5C100376F86 /* MainTabBar.swift */; };
 		BEDA79731B3DB2B0003E4DD0 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDA79721B3DB2B0003E4DD0 /* NetworkTools.swift */; };
 		BEDA79751B3E36AF003E4DD0 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDA79741B3E36AF003E4DD0 /* UserAccount.swift */; };
+		BEF0139E1B42ADC800FFF7FA /* WeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF0139D1B42ADC800FFF7FA /* WeStatus.swift */; };
+		BEF013A01B42B35900FFF7FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF0139F1B42B35900FFF7FA /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		BEC0B4FB1B39A5C100376F86 /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		BEDA79721B3DB2B0003E4DD0 /* NetworkTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
 		BEDA79741B3E36AF003E4DD0 /* UserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		BEF0139D1B42ADC800FFF7FA /* WeStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeStatus.swift; sourceTree = "<group>"; };
+		BEF0139F1B42B35900FFF7FA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				BEDA79741B3E36AF003E4DD0 /* UserAccount.swift */,
+				BEF0139D1B42ADC800FFF7FA /* WeStatus.swift */,
+				BEF0139F1B42B35900FFF7FA /* User.swift */,
 			);
 			path = Modle;
 			sourceTree = "<group>";
@@ -494,6 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE789FF61B39462E00E4C189 /* ProfileTableViewController.swift in Sources */,
+				BEF0139E1B42ADC800FFF7FA /* WeStatus.swift in Sources */,
 				BEA9DFA51B401B4000143EA4 /* PopoverPresentationController.swift in Sources */,
 				BEDA79731B3DB2B0003E4DD0 /* NetworkTools.swift in Sources */,
 				BE5439E91B4184F4003A26C3 /* QRCodeViewController.swift in Sources */,
@@ -510,6 +517,7 @@
 				BE181E421B3A8C2900D1953C /* VisitorLoginView.swift in Sources */,
 				BE789FB61B3918EF00E4C189 /* AppDelegate.swift in Sources */,
 				BE4E31081B3EEEA20092F62F /* WelcomeViewController.swift in Sources */,
+				BEF013A01B42B35900FFF7FA /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -118,7 +118,10 @@ extension HomeTableViewController : UIViewControllerTransitioningDelegate, UIVie
     
     // 转场动画时长
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 0.5
+        if isTitlePresenting {
+            return 0.5
+        }
+        return 0.2
     }
     
     // 自定义转场动画
@@ -134,17 +137,17 @@ extension HomeTableViewController : UIViewControllerTransitioningDelegate, UIVie
             
             toView?.transform = CGAffineTransformMakeScale(1, 0)
             
-            UIView.animateWithDuration(transitionDuration(transitionContext), delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            UIView.animateWithDuration(transitionDuration(transitionContext), delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 20, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
                 toView?.transform = CGAffineTransformIdentity
                 }) { (_) -> Void in
                     transitionContext.completeTransition(true)
             }
         }
         else {
-//            let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)
+            let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)
             //动画不起作用？
             UIView.animateWithDuration(transitionDuration(transitionContext), animations: { () -> Void in
-                toView?.transform = CGAffineTransformMakeScale(1, 0)
+                fromView?.transform = CGAffineTransformMakeScale(1, 0.0001)
                 }, completion: { (_) -> Void in
                     transitionContext.completeTransition(true)
                     self.titleNavBtn.imageView?.transform = CGAffineTransformMakeRotation(0)
