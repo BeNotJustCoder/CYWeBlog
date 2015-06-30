@@ -28,59 +28,43 @@ class HomeTableViewController: BaseModuleViewController {
     }
     
     private func setupNavigationBar() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftNavBtn)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightNavBtn)
-        navigationItem.titleView = titleNavBtn
+        
+        // 设置左右按钮
+        navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "navigationbar_friendsearch", highlightedImageName: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "navigationbar_pop", highlightedImageName: nil)
+        
+        // 添加 target
+        let rightBtn = navigationItem.rightBarButtonItem!.customView as! UIButton
+        rightBtn.addTarget(self, action: "presentQRscanViewController", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        //设置中间标题
+        let titleBtn = HomeTitleNavButton.button(shareUserAccount!.name!)
+        navigationItem.titleView = titleBtn
+        titleBtn.addTarget(self, action: "onTitleNavBtnClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+
     }
     
-    lazy var leftNavBtn:UIButton = {
-        let btn = UIButton()
-//        btn.frame = CGRectMake(0, 0, 30, 30)
-        btn.setImage(UIImage(named: "navigationbar_friendsearch"), forState: UIControlState.Normal);
-        btn.setImage(UIImage(named: "navigationbar_friendsearch_highlighted"), forState: UIControlState.Highlighted)
-        btn.sizeToFit()
-        
-        return btn
-    }()
-    
-    lazy var rightNavBtn:UIButton = {
-        let btn = UIButton()
-//        btn.frame = CGRectMake(0, 0, 30, 30)
-        btn.setImage(UIImage(named: "navigationbar_pop"), forState: UIControlState.Normal);
-        btn.setImage(UIImage(named: "navigationbar_pop_highlighted"), forState: UIControlState.Highlighted)
-        btn.addTarget(self, action: "presentQRscanViewController", forControlEvents: UIControlEvents.TouchUpInside)
-        btn.sizeToFit()
-        return btn
-    }()
-    
-    lazy var titleNavBtn:UIButton = {
-        let userName = shareUserAccount!.name!
-        
-        let btn = HomeTitleNavButton()
-        btn.setTitle(userName + " ", forState: UIControlState.Normal)
-        btn.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
-        btn.setBackgroundImage(UIImage(named: "timeline_card_middle_background_highlighted"), forState: UIControlState.Highlighted)
-        btn.sizeToFit()
-        
-        btn.setImage(UIImage(named: "navigationbar_arrow_down"), forState: UIControlState.Normal)
-        btn.addTarget(self, action: "onTitleNavBtnClicked:", forControlEvents: UIControlEvents.TouchUpInside)
-        return btn
-    }()
-    
+
     func onTitleNavBtnClicked(btn:HomeTitleNavButton) {
         btn.imageView?.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
         
         presentTitlePopoverView()
     }
     
-    
-    private func presentTitlePopoverView() {
+    //设置弹出菜单的转场动画
+//    let popoverAnimator = PopoverAnimator() 为什么这边这样不行？
+    private lazy var popoverAnimator = PopoverAnimator()
+    func presentTitlePopoverView() {
         let sb = UIStoryboard(name: "TitlePopoverViewController", bundle: nil)
         let vc = sb.instantiateViewControllerWithIdentifier("TitlePopoverViewControllerSB")
         
         //设置转场代理和转场模式
-        vc.transitioningDelegate = self
+        vc.transitioningDelegate = popoverAnimator//self
         vc.modalPresentationStyle = UIModalPresentationStyle.Custom
+        
+        // 2. 设置视图的展现大小
+        let x = (view.bounds.width - 200) * 0.5
+        popoverAnimator.presentFrame = CGRectMake(x, 56, 200, 300)
         
         presentViewController(vc, animated: true, completion: nil)
     }
@@ -92,68 +76,7 @@ class HomeTableViewController: BaseModuleViewController {
         
         presentViewController(qrVc, animated: true, completion: nil)
     }
+    
+    ///懒加载
 
-}
-
-
-extension HomeTableViewController : UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
-    
-    
-    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-        return PopoverPresentationController(presentedViewController: presented,presentingViewController: presenting);
-    }
-    
-    
-    // 指定负责转场动画的控制器
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        isTitlePresenting = true
-        return self
-    }
-    
-    //指定撤销的动画
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        isTitlePresenting = false
-        return self
-    }
-    
-    // 转场动画时长
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        if isTitlePresenting {
-            return 0.5
-        }
-        return 0.2
-    }
-    
-    // 自定义转场动画
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let toView = transitionContext.viewForKey(UITransitionContextToViewKey)
-        print(toView)
-        
-        if isTitlePresenting {
-            
-            toView?.layer.anchorPoint = CGPointMake(0.5, 0)
-            
-            transitionContext.containerView()?.addSubview(toView!)
-            
-            toView?.transform = CGAffineTransformMakeScale(1, 0)
-            
-            UIView.animateWithDuration(transitionDuration(transitionContext), delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 20, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
-                toView?.transform = CGAffineTransformIdentity
-                }) { (_) -> Void in
-                    transitionContext.completeTransition(true)
-            }
-        }
-        else {
-            let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)
-            //动画不起作用？
-            UIView.animateWithDuration(transitionDuration(transitionContext), animations: { () -> Void in
-                fromView?.transform = CGAffineTransformMakeScale(1, 0.0001)
-                }, completion: { (_) -> Void in
-                    transitionContext.completeTransition(true)
-                    self.titleNavBtn.imageView?.transform = CGAffineTransformMakeRotation(0)
-            })
-            
-        }
-        
-    }
 }

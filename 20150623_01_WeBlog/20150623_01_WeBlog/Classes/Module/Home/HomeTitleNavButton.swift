@@ -9,6 +9,21 @@
 import UIKit
 
 class HomeTitleNavButton: UIButton {
+    var title:String?
+
+    class func button(title: String) -> HomeTitleNavButton {
+        
+        let btn = HomeTitleNavButton()
+        
+        btn.titleLabel?.font = UIFont.systemFontOfSize(17.0)
+        btn.setTitle(title + " ", forState: UIControlState.Normal)
+        btn.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+        btn.setBackgroundImage(UIImage(named: "timeline_card_middle_background_highlighted"), forState: UIControlState.Highlighted)
+        btn.setImage(UIImage(named: "navigationbar_arrow_down"), forState: UIControlState.Normal)
+        btn.sizeToFit()
+        
+        return btn
+    }
 
     override func layoutSubviews() {
         super.layoutSubviews()

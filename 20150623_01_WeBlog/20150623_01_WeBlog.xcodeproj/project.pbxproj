@@ -33,6 +33,8 @@
 		BEDA79751B3E36AF003E4DD0 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDA79741B3E36AF003E4DD0 /* UserAccount.swift */; };
 		BEF0139E1B42ADC800FFF7FA /* WeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF0139D1B42ADC800FFF7FA /* WeStatus.swift */; };
 		BEF013A01B42B35900FFF7FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF0139F1B42B35900FFF7FA /* User.swift */; };
+		BEF013A31B42B9F100FFF7FA /* PopoverAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF013A21B42B9F100FFF7FA /* PopoverAnimator.swift */; };
+		BEF013A51B42C1EB00FFF7FA /* UIBarButtonItem+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF013A41B42C1EB00FFF7FA /* UIBarButtonItem+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		BEDA79741B3E36AF003E4DD0 /* UserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		BEF0139D1B42ADC800FFF7FA /* WeStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeStatus.swift; sourceTree = "<group>"; };
 		BEF0139F1B42B35900FFF7FA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BEF013A21B42B9F100FFF7FA /* PopoverAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverAnimator.swift; sourceTree = "<group>"; };
+		BEF013A41B42C1EB00FFF7FA /* UIBarButtonItem+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				BEDA79721B3DB2B0003E4DD0 /* NetworkTools.swift */,
+				BEF013A41B42C1EB00FFF7FA /* UIBarButtonItem+Ext.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -302,8 +307,9 @@
 		BEA9DFA11B400DF600143EA4 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				BEA9DFA21B400E8500143EA4 /* TitlePopoverViewController.storyboard */,
 				BEA9DFA41B401B4000143EA4 /* PopoverPresentationController.swift */,
+				BEA9DFA21B400E8500143EA4 /* TitlePopoverViewController.storyboard */,
+				BEF013A21B42B9F100FFF7FA /* PopoverAnimator.swift */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -509,12 +515,14 @@
 				BE4E31061B3E9BB60092F62F /* NewFeatureViewController.swift in Sources */,
 				BEA9DFA01B3FF22700143EA4 /* HomeTitleNavButton.swift in Sources */,
 				BEC0B4FC1B39A5C100376F86 /* MainTabBar.swift in Sources */,
+				BEF013A31B42B9F100FFF7FA /* PopoverAnimator.swift in Sources */,
 				BE85DB2D1B3C283500DA7B62 /* OAuthViewController.swift in Sources */,
 				BE789FF41B39462300E4C189 /* MessageTableViewController.swift in Sources */,
 				BEC0B4F81B39908000376F86 /* MainViewController.swift in Sources */,
 				BEDA79751B3E36AF003E4DD0 /* UserAccount.swift in Sources */,
 				BE789FEE1B3945F400E4C189 /* DiscoverTableViewController.swift in Sources */,
 				BE181E421B3A8C2900D1953C /* VisitorLoginView.swift in Sources */,
+				BEF013A51B42C1EB00FFF7FA /* UIBarButtonItem+Ext.swift in Sources */,
 				BE789FB61B3918EF00E4C189 /* AppDelegate.swift in Sources */,
 				BE4E31081B3EEEA20092F62F /* WelcomeViewController.swift in Sources */,
 				BEF013A01B42B35900FFF7FA /* User.swift in Sources */,

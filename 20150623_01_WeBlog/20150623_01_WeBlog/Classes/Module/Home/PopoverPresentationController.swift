@@ -10,6 +10,8 @@ import UIKit
 
 class PopoverPresentationController: UIPresentationController {
     
+    var presentFrame:CGRect = CGRectZero
+    
     lazy var dummyView:UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(white: 0, alpha: 0.2)
@@ -26,7 +28,7 @@ class PopoverPresentationController: UIPresentationController {
         
         containerView?.insertSubview(dummyView, belowSubview: presentedView()!)
         
-        presentedView()!.frame = CGRectMake(100, 56, 200, 300)
+        presentedView()!.frame = presentFrame
     }
     
     func onTapDummyView() {
