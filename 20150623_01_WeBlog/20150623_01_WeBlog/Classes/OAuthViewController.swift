@@ -98,6 +98,7 @@ class OAuthViewController: UIViewController,UIWebViewDelegate {
             UserAccount(dict:jsonData as! [String : AnyObject]).loadUserInfo({ (account, error) -> () in
                 if account != nil {
                     print(account)
+                    NSNotificationCenter.defaultCenter().postNotificationName(SwitchRootVCNotification, object: false)
                 }
                 else {
                     print(error)

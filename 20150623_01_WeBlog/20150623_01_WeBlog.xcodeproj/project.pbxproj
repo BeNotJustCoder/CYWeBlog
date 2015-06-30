@@ -35,6 +35,7 @@
 		BEF013A01B42B35900FFF7FA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF0139F1B42B35900FFF7FA /* User.swift */; };
 		BEF013A31B42B9F100FFF7FA /* PopoverAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF013A21B42B9F100FFF7FA /* PopoverAnimator.swift */; };
 		BEF013A51B42C1EB00FFF7FA /* UIBarButtonItem+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF013A41B42C1EB00FFF7FA /* UIBarButtonItem+Ext.swift */; };
+		BEF013A71B42DA0400FFF7FA /* Pods.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 841D0FF66A82D10C96008CFC /* Pods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,19 @@
 			remoteInfo = 20150623_01_WeBlog;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BEF013A61B42D9ED00FFF7FA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BEF013A71B42DA0400FFF7FA /* Pods.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		028BFE973C49CF2795B5FE54 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -335,6 +349,7 @@
 				BE789FB01B3918EF00E4C189 /* Resources */,
 				5C89E5BB73CA2D7A890ECD6A /* Embed Pods Frameworks */,
 				5048033AC4ECBF340398BBFD /* Copy Pods Resources */,
+				BEF013A61B42D9ED00FFF7FA /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -393,6 +408,7 @@
 				TargetAttributes = {
 					BE789FB11B3918EF00E4C189 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 89A9U83UX4;
 					};
 					BE789FC51B3918EF00E4C189 = {
 						CreatedOnToolsVersion = 7.0;
@@ -650,11 +666,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = 20150623_01_WeBlog/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lincy.-0150623-01-WeBlog";
 				PRODUCT_NAME = WeBlog;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -664,11 +684,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = 20150623_01_WeBlog/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lincy.-0150623-01-WeBlog";
 				PRODUCT_NAME = WeBlog;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
