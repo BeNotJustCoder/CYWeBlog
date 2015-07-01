@@ -53,9 +53,9 @@ class WeStatusCell: UITableViewCell {
         addSubview(iconView)        // 头像
         addSubview(nameLabel)       // 用户名
         addSubview(memberIconView)  // 是否是会员
-        addSubview(vipIconView)     //认证类型
-        addSubview(timeLabel)       //时间和来源
-        addSubview(commentLabel)    //评论
+        addSubview(vipIconView)     // 认证类型
+        addSubview(timeLabel)       // 时间和来源
+        addSubview(commentLabel)    // 评论
         
         iconView.ff_AlignInner(ff_AlignType.TopLeft, referView: self, size: CGSize(width: 34, height: 34), offset: CGPoint(x: 12, y: 12))
         nameLabel.ff_AlignHorizontal(ff_AlignType.TopRight, referView: iconView, size: nil, offset: CGPoint(x: 12, y: 0))
