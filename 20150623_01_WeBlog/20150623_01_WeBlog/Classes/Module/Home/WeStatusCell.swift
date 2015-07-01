@@ -43,23 +43,27 @@ class WeStatusCell: UITableViewCell {
             timeLabel.text = "昨天 13:40  来自 微博 weibo.com"
 //            timeLabel.text = "\(status!.created_at)  \(status!.source)"
             
+            commentLabel.text = status?.text
         }
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        addSubview(iconView)
-        addSubview(nameLabel)
-        addSubview(memberIconView)
-        addSubview(vipIconView)
-        addSubview(timeLabel)
+        addSubview(iconView)        // 头像
+        addSubview(nameLabel)       // 用户名
+        addSubview(memberIconView)  // 是否是会员
+        addSubview(vipIconView)     //认证类型
+        addSubview(timeLabel)       //时间和来源
+        addSubview(commentLabel)    //评论
         
         iconView.ff_AlignInner(ff_AlignType.TopLeft, referView: self, size: CGSize(width: 34, height: 34), offset: CGPoint(x: 12, y: 12))
         nameLabel.ff_AlignHorizontal(ff_AlignType.TopRight, referView: iconView, size: nil, offset: CGPoint(x: 12, y: 0))
         memberIconView.ff_AlignHorizontal(ff_AlignType.CenterRight, referView: nameLabel, size: nil, offset: CGPoint(x: 4, y: 0))
         vipIconView.ff_AlignInner(ff_AlignType.BottomRight, referView: iconView, size: nil, offset: CGPoint(x: 8, y: 8))
         timeLabel.ff_AlignHorizontal(ff_AlignType.BottomRight, referView: iconView, size: nil, offset: CGPoint(x: 12, y: 0))
+        commentLabel.ff_AlignVertical(ff_AlignType.BottomLeft, referView: iconView, size: nil, offset: CGPoint(x: 0, y: 12))
+        commentLabel.ff_AlignInner(ff_AlignType.BottomRight, referView: self, size: nil, offset: CGPoint(x: -4, y: -8))
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -72,4 +76,5 @@ class WeStatusCell: UITableViewCell {
     lazy var memberIconView = UIImageView()
     lazy var vipIconView = UIImageView()
     lazy var timeLabel = UILabel(color: UIColor.orangeColor(), fontSize: 10)
+    lazy var commentLabel = UILabel(color: UIColor.darkGrayColor(), fontSize: 15, mutiLines: true)
 }
