@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class WeStatus: NSObject {
     
     /// 创建时间
@@ -37,6 +38,18 @@ class WeStatus: NSObject {
     override var description:String {
         let dict = dictionaryWithValuesForKeys(WeStatus.properties)
         return "\(dict)"
+    }
+    
+    class func loadStatus(){
+        
+        let param = ["access_token" : shareUserAccount!.access_token]
+        let url = "https://api.weibo.com/2/statuses/home_timeline.json"
+        
+        NetworkTools.sharedNetworkTools().GET(url, parameters: param, success: { (_, jsonData) -> Void in
+            print(jsonData)
+            }) { (_, error) -> Void in
+                print(error)
+        }
     }
 
 }

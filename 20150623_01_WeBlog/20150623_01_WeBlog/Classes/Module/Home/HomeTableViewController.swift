@@ -16,8 +16,10 @@ class HomeTableViewController: BaseModuleViewController {
 
         visitorView?.setVisitorViewInfo("visitordiscover_feed_image_house", message: "关注一些人，回到这里看看有什么惊喜", isHome: true)
         
-        if isUserLogin {
+        if UserAccount.isUserLogin {
             setupNavigationBar()
+            
+            loadData()
         }
     }
     
@@ -75,6 +77,11 @@ class HomeTableViewController: BaseModuleViewController {
         let qrVc = sb.instantiateInitialViewController()!
         
         presentViewController(qrVc, animated: true, completion: nil)
+    }
+    
+    /// 表格的数据源和方法
+    func loadData() {
+        WeStatus.loadStatus()
     }
     
     ///懒加载

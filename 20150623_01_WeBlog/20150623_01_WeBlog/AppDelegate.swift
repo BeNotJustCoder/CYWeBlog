@@ -61,6 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if notification.object as! Bool == true {
             window?.rootViewController = MainViewController()
         }
+        else {
+            window?.rootViewController = WelcomeViewController()
+        }
     }
     
     /// 是否新版本

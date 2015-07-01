@@ -12,6 +12,8 @@ var shareUserAccount = UserAccount.loadAccount()
 
 class UserAccount: NSObject,NSCoding {
     
+    static var isUserLogin = false
+    
     /// 用于调用access_token，接口获取授权后的access token
     var access_token: String
     /// access_token的生命周期，单位是秒数(实际是数值！)5
@@ -47,6 +49,7 @@ class UserAccount: NSObject,NSCoding {
             // 判断日期是否过期，根当前系统时间进行`比较`，低于当前系统时间，就认为过期
             // 过期日期`大于`当前日期，结果应该是降序
             if account.expiresDate.compare(NSDate()) == NSComparisonResult.OrderedDescending {
+                UserAccount.isUserLogin = true
                 return account
             }
         }
@@ -68,7 +71,7 @@ class UserAccount: NSObject,NSCoding {
             ]
         
         NetworkTools.sharedNetworkTools().GET("2/users/show.json", parameters: params, success: { (_, jsonData) -> Void in
-            print(jsonData)
+//            print(jsonData)
             
             let dict = jsonData as! [String: AnyObject]
             self.name = dict["name"] as? String
@@ -76,6 +79,7 @@ class UserAccount: NSObject,NSCoding {
             
             self.saveAccount()
             
+            UserAccount.isUserLogin = true
             // 通知调用方，处理完成
             finished(account: self, error: nil)
             
