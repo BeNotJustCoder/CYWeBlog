@@ -40,15 +40,26 @@ class WeStatus: NSObject {
         return "\(dict)"
     }
     
-    class func loadStatus(){
+    class func loadStatus(finished: (weStatus:[WeStatus]?, error:NSError?)->() ){
         
         let param = ["access_token" : shareUserAccount!.access_token]
         let url = "https://api.weibo.com/2/statuses/home_timeline.json"
         
         NetworkTools.sharedNetworkTools().GET(url, parameters: param, success: { (_, jsonData) -> Void in
-            print(jsonData)
+//            print(jsonData)
+            
+            let array = jsonData["statuses"] as! [[String : AnyObject]]
+            var statuses = [WeStatus]()
+            
+            for dict in array {
+                statuses.append(WeStatus(dict: dict))
+            }
+            
+            finished(weStatus: statuses, error: nil)
+            
             }) { (_, error) -> Void in
-                print(error)
+//                print(error)
+                finished(weStatus: nil, error: error)
         }
     }
 

@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupApperance()
         
-        let isUpdate = isAppUpdate()
-        print("是否更新: \(isUpdate)")
+//        let isUpdate = isAppUpdate()
+//        print("是否更新: \(isUpdate)")
         return true
     }
     
@@ -71,12 +71,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 1. 获取应用程序`当前版本`
         let currentVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
-        print(currentVersion)
+//        print(currentVersion)
         
         // 2. 获取应用程序`之前的版本`，从用户偏好中读取
         let versionKey = "preVersion"
         let preVersion = NSUserDefaults.standardUserDefaults().objectForKey(versionKey)
-        print(preVersion)
+//        print(preVersion)
         
         // 3. 将`当前版本`写入用户偏好
         NSUserDefaults.standardUserDefaults().setObject(currentVersion, forKey: versionKey)

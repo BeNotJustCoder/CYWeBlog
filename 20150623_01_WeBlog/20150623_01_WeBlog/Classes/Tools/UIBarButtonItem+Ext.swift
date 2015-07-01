@@ -22,7 +22,6 @@ extension UIBarButtonItem {
         btn.setImage(UIImage(named: hImageName), forState: UIControlState.Highlighted)
         
         btn.sizeToFit()
-        print(btn.frame)
         
         self.init(customView: btn)
     }

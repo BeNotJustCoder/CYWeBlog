@@ -81,7 +81,9 @@ class HomeTableViewController: BaseModuleViewController {
     
     /// 表格的数据源和方法
     func loadData() {
-        WeStatus.loadStatus()
+        WeStatus.loadStatus { (weStatus, error) -> () in
+            print(weStatus)
+        }
     }
     
     ///懒加载
