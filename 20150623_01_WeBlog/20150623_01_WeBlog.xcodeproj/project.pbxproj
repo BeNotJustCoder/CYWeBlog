@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1ADC60AF6A69B3D4AFC2F6D8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841D0FF66A82D10C96008CFC /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BE0AFE651B439C2200C36337 /* WeStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0AFE641B439C2200C36337 /* WeStatusCell.swift */; };
+		BE0AFE671B43BF2500C36337 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0AFE661B43BF2500C36337 /* UIView+AutoLayout.swift */; };
+		BE0AFE691B43C20A00C36337 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0AFE681B43C20A00C36337 /* UILabel+Ext.swift */; };
 		BE181E3E1B3A54FF00D1953C /* ControllersSetting.json in Resources */ = {isa = PBXBuildFile; fileRef = BE181E3D1B3A54FF00D1953C /* ControllersSetting.json */; };
 		BE181E401B3A8B7A00D1953C /* BaseModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE181E3F1B3A8B7A00D1953C /* BaseModuleViewController.swift */; };
 		BE181E421B3A8C2900D1953C /* VisitorLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE181E411B3A8C2900D1953C /* VisitorLoginView.swift */; };
@@ -74,6 +76,8 @@
 		841D0FF66A82D10C96008CFC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8493124F9819627E9E1F0052 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BE0AFE641B439C2200C36337 /* WeStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeStatusCell.swift; sourceTree = "<group>"; };
+		BE0AFE661B43BF2500C36337 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		BE0AFE681B43C20A00C36337 /* UILabel+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		BE181E3D1B3A54FF00D1953C /* ControllersSetting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ControllersSetting.json; sourceTree = "<group>"; };
 		BE181E3F1B3A8B7A00D1953C /* BaseModuleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModuleViewController.swift; sourceTree = "<group>"; };
 		BE181E411B3A8C2900D1953C /* VisitorLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorLoginView.swift; sourceTree = "<group>"; };
@@ -307,6 +311,8 @@
 			children = (
 				BEDA79721B3DB2B0003E4DD0 /* NetworkTools.swift */,
 				BEF013A41B42C1EB00FFF7FA /* UIBarButtonItem+Ext.swift */,
+				BE0AFE661B43BF2500C36337 /* UIView+AutoLayout.swift */,
+				BE0AFE681B43C20A00C36337 /* UILabel+Ext.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -532,6 +538,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE0AFE671B43BF2500C36337 /* UIView+AutoLayout.swift in Sources */,
 				BE789FF61B39462E00E4C189 /* ProfileTableViewController.swift in Sources */,
 				BEF0139E1B42ADC800FFF7FA /* WeStatus.swift in Sources */,
 				BEA9DFA51B401B4000143EA4 /* PopoverPresentationController.swift in Sources */,
@@ -553,6 +560,7 @@
 				BEF013A51B42C1EB00FFF7FA /* UIBarButtonItem+Ext.swift in Sources */,
 				BE789FB61B3918EF00E4C189 /* AppDelegate.swift in Sources */,
 				BE4E31081B3EEEA20092F62F /* WelcomeViewController.swift in Sources */,
+				BE0AFE691B43C20A00C36337 /* UILabel+Ext.swift in Sources */,
 				BEF013A01B42B35900FFF7FA /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

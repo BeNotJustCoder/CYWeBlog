@@ -36,7 +36,7 @@ class HomeTableViewController: BaseModuleViewController {
         visitorView?.startAnimation()
     }
     
-    /// 表格的数据源和方法
+    /// 表格的数据源和代理方法
     
     func loadData() {
         WeStatus.loadStatus { (weStatus, error) -> () in
@@ -50,10 +50,15 @@ class HomeTableViewController: BaseModuleViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("statusCell", forIndexPath: indexPath)
-        cell.textLabel?.text = statuses![indexPath.row].text
+        let cell = tableView.dequeueReusableCellWithIdentifier("statusCell", forIndexPath: indexPath) as! WeStatusCell
+//        cell.textLabel?.text = statuses![indexPath.row].text
+        cell.status = statuses![indexPath.row]
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 200
     }
     
     
