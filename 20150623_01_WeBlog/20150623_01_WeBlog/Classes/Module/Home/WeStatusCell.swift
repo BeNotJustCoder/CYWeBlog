@@ -12,6 +12,9 @@ import SDWebImage
 
 class WeStatusCell: UITableViewCell {
     
+    var picViewWidthCons:NSLayoutConstraint?
+    var picViewHeightCons:NSLayoutConstraint?
+    
     var status:WeStatus?{
         didSet{
             let user = status!.user!
@@ -56,6 +59,7 @@ class WeStatusCell: UITableViewCell {
         addSubview(vipIconView)     // 认证类型
         addSubview(timeLabel)       // 时间和来源
         addSubview(commentLabel)    // 评论
+        addSubview(pictureView)     // 配图视图
         
         iconView.ff_AlignInner(ff_AlignType.TopLeft, referView: self, size: CGSize(width: 34, height: 34), offset: CGPoint(x: 12, y: 12))
         nameLabel.ff_AlignHorizontal(ff_AlignType.TopRight, referView: iconView, size: nil, offset: CGPoint(x: 12, y: 0))
@@ -63,7 +67,15 @@ class WeStatusCell: UITableViewCell {
         vipIconView.ff_AlignInner(ff_AlignType.BottomRight, referView: iconView, size: nil, offset: CGPoint(x: 8, y: 8))
         timeLabel.ff_AlignHorizontal(ff_AlignType.BottomRight, referView: iconView, size: nil, offset: CGPoint(x: 12, y: 0))
         commentLabel.ff_AlignVertical(ff_AlignType.BottomLeft, referView: iconView, size: nil, offset: CGPoint(x: 0, y: 12))
-        commentLabel.ff_AlignInner(ff_AlignType.BottomRight, referView: self, size: nil, offset: CGPoint(x: -4, y: -8))
+//        commentLabel.ff_AlignInner(ff_AlignType.BottomRight, referView: self, size: nil, offset: CGPoint(x: -4, y: -8))
+        commentLabel.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 16
+        
+        // 配图视图
+        let cons = pictureView.ff_AlignVertical(ff_AlignType.BottomLeft, referView: commentLabel, size: CGSize(width: 290, height: 90), offset: CGPoint(x: 0, y: 12))
+        pictureView.ff_AlignInner(ff_AlignType.BottomRight, referView: self, size: nil, offset: CGPoint(x: -4, y: -8))
+        // 记录宽高约束
+        picViewWidthCons = pictureView.ff_Constraint(cons, attribute: NSLayoutAttribute.Width)
+        picViewHeightCons = pictureView.ff_Constraint(cons, attribute: NSLayoutAttribute.Height)
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -77,4 +89,8 @@ class WeStatusCell: UITableViewCell {
     lazy var vipIconView = UIImageView()
     lazy var timeLabel = UILabel(color: UIColor.orangeColor(), fontSize: 10)
     lazy var commentLabel = UILabel(color: UIColor.darkGrayColor(), fontSize: 15, mutiLines: true)
+    
+    // 图像视图 - UICollectionView
+    lazy var pictureLayout = UICollectionViewFlowLayout()
+    lazy var pictureView: UICollectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: self.pictureLayout)
 }
