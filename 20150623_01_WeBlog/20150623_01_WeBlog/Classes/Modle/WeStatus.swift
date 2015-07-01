@@ -29,8 +29,16 @@ class WeStatus: NSObject {
     init(dict:[String : AnyObject]) {
         super.init()
         for key in WeStatus.properties {
+            if dict[key] == nil || key == "user" {
+                continue
+            }
+            
             if dict[key] != nil {
                 setValue(dict[key], forKey: key)
+            }
+            
+            if let userDict = dict["user"] as? [String: AnyObject] {
+                user = User(dict: userDict)
             }
         }
     }

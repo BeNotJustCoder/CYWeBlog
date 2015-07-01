@@ -10,11 +10,18 @@ import UIKit
 
 class HomeTableViewController: BaseModuleViewController {
     var isTitlePresenting:Bool = false
+    var statuses:[WeStatus]?{
+        didSet{
+            self.tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         visitorView?.setVisitorViewInfo("visitordiscover_feed_image_house", message: "关注一些人，回到这里看看有什么惊喜", isHome: true)
+        
+        tableView.registerClass(WeStatusCell.self, forCellReuseIdentifier: "statusCell")
         
         if UserAccount.isUserLogin {
             setupNavigationBar()
@@ -29,6 +36,28 @@ class HomeTableViewController: BaseModuleViewController {
         visitorView?.startAnimation()
     }
     
+    /// 表格的数据源和方法
+    
+    func loadData() {
+        WeStatus.loadStatus { (weStatus, error) -> () in
+//            print(weStatus)
+            self.statuses = weStatus
+        }
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return statuses?.count ?? 0
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("statusCell", forIndexPath: indexPath)
+        cell.textLabel?.text = statuses![indexPath.row].text
+        
+        return cell
+    }
+    
+    
+    /// 设置导航条
     private func setupNavigationBar() {
         
         // 设置左右按钮
@@ -53,7 +82,7 @@ class HomeTableViewController: BaseModuleViewController {
         presentTitlePopoverView()
     }
     
-    //设置弹出菜单的转场动画
+    /// 设置弹出菜单的转场动画
 //    let popoverAnimator = PopoverAnimator() 为什么这边这样不行？
     private lazy var popoverAnimator = PopoverAnimator()
     func presentTitlePopoverView() {
@@ -71,7 +100,7 @@ class HomeTableViewController: BaseModuleViewController {
         presentViewController(vc, animated: true, completion: nil)
     }
     
-    //二维码扫描视图
+    /// 二维码扫描视图
     func presentQRscanViewController() {
         let sb = UIStoryboard(name: "QRCodeViewController", bundle: nil)
         let qrVc = sb.instantiateInitialViewController()!
@@ -79,12 +108,6 @@ class HomeTableViewController: BaseModuleViewController {
         presentViewController(qrVc, animated: true, completion: nil)
     }
     
-    /// 表格的数据源和方法
-    func loadData() {
-        WeStatus.loadStatus { (weStatus, error) -> () in
-            print(weStatus)
-        }
-    }
     
     ///懒加载
 
