@@ -9,8 +9,8 @@
 import UIKit
 import SDWebImage
 
-
-class WeStatusCell: UITableViewCell {
+private let CYPictureCellReuseIdentifier = "pictureCell"
+class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
     
     var picViewWidthCons:NSLayoutConstraint?
     var picViewHeightCons:NSLayoutConstraint?
@@ -47,6 +47,12 @@ class WeStatusCell: UITableViewCell {
 //            timeLabel.text = "\(status!.created_at)  \(status!.source)"
             
             commentLabel.text = status?.text
+            
+            // 设置图片预览视图的大小
+            let result = calcPictureViewSize(status!)
+            picViewHeightCons?.constant = result.viewSize.height
+            picViewWidthCons?.constant = result.viewSize.width
+            pictureLayout.itemSize = result.itemSize
         }
     }
     
@@ -60,6 +66,7 @@ class WeStatusCell: UITableViewCell {
         addSubview(timeLabel)       // 时间和来源
         addSubview(commentLabel)    // 评论
         addSubview(pictureView)     // 配图视图
+        preparePictureView()
         
         iconView.ff_AlignInner(ff_AlignType.TopLeft, referView: self, size: CGSize(width: 34, height: 34), offset: CGPoint(x: 12, y: 12))
         nameLabel.ff_AlignHorizontal(ff_AlignType.TopRight, referView: iconView, size: nil, offset: CGPoint(x: 12, y: 0))
@@ -72,14 +79,96 @@ class WeStatusCell: UITableViewCell {
         
         // 配图视图
         let cons = pictureView.ff_AlignVertical(ff_AlignType.BottomLeft, referView: commentLabel, size: CGSize(width: 290, height: 90), offset: CGPoint(x: 0, y: 12))
-        pictureView.ff_AlignInner(ff_AlignType.BottomRight, referView: self, size: nil, offset: CGPoint(x: -4, y: -8))
+        pictureView.ff_AlignInner(ff_AlignType.BottomLeft, referView: self, size: nil, offset: CGPoint(x: 12, y: -8))
         // 记录宽高约束
         picViewWidthCons = pictureView.ff_Constraint(cons, attribute: NSLayoutAttribute.Width)
         picViewHeightCons = pictureView.ff_Constraint(cons, attribute: NSLayoutAttribute.Height)
+        
+        
     }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    ///  根据微博模型计算图片是的大小
+    /**
+    0. 没有图片，返回zero
+    1. 单图会按照图片等比例显示
+    2. 多图的图片大小固定
+    3. 多图如果是4张，会按照 2 * 2 显示
+    4. 多图其他数量，按照 3 * 3 九宫格显示
+    */
+    private func calcPictureViewSize(status: WeStatus) -> (viewSize: CGSize, itemSize: CGSize) {
+        
+        // 0. 获取图片数量
+        let count = status.thumbImageURLs?.count ?? 0
+        let itemSize = CGSize(width: 90, height: 90)
+        let margin: CGFloat = 4
+        
+        // 1. 没有图片
+        if count == 0 {
+            return (CGSizeZero, itemSize)
+        }
+        
+        // 2. 单图
+        if count == 1 {
+            // 1> 从缓存`拿到`并且创建 image
+            // key 就是 url 的完整字符串，sdwebimage缓存图片文件名是对 url 的完整字符串 md5
+            let key = status.thumbImageURLs![0].absoluteString
+            let image = SDWebImageManager.sharedManager().imageCache.imageFromDiskCacheForKey(key)
+            
+            print("单张图片 \(key) \(image.size)")
+            
+            // 2> 返回 image.size
+            return (image.size, image.size)
+        }
+        
+        // 3. 4张图片
+        if count == 4 {
+            let w = itemSize.width * 2 + margin
+            return (CGSize(width: w, height: w),itemSize)
+        }
+        
+        // 4. 多张图片
+        // 每行图片数量
+        let rowCount = 3
+        // 1> 计算行数
+        // 2,3 -> 1
+        // 5,6 -> 2
+        // 7,8,9 -> 3
+        let row = (count - 1) / rowCount + 1
+        let w = itemSize.width * CGFloat(rowCount) + CGFloat(rowCount - 1) * margin
+        let h = itemSize.height * CGFloat(row) + CGFloat(row - 1) * margin
+        
+        return (CGSize(width: w, height: h), itemSize)
+    }
+    
+    ///  准备配图视图图
+    private func preparePictureView() {
+        // 1. 设置背景颜色
+        pictureView.backgroundColor = UIColor.lightGrayColor()
+        // 2. 数据源
+        pictureView.dataSource = self
+        
+        // 3. 注册可重用cell
+        pictureView.registerClass(StatusPictureCell.self, forCellWithReuseIdentifier: CYPictureCellReuseIdentifier)
+        // 4. 设置 layout
+        pictureLayout.minimumInteritemSpacing = 4
+        pictureLayout.minimumLineSpacing = 4
+    }
+    
+    /// collectionView 的数据源方法
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return status?.thumbImageURLs?.count ?? 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CYPictureCellReuseIdentifier, forIndexPath: indexPath) as! StatusPictureCell
+        
+        cell.imageURL = status!.thumbImageURLs![indexPath.item]
+        
+        return cell
     }
 
     /// 懒加载
@@ -93,4 +182,27 @@ class WeStatusCell: UITableViewCell {
     // 图像视图 - UICollectionView
     lazy var pictureLayout = UICollectionViewFlowLayout()
     lazy var pictureView: UICollectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: self.pictureLayout)
+}
+
+
+private class StatusPictureCell: UICollectionViewCell {
+    
+    var imageURL: NSURL? {
+        didSet {
+            iconView.sd_setImageWithURL(imageURL!)
+        }
+    }
+    
+    var iconView: UIImageView = UIImageView()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        addSubview(iconView)
+        iconView.ff_Fill(self)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
