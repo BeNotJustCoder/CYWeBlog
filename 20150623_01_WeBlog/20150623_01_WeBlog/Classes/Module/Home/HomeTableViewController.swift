@@ -15,6 +15,9 @@ class HomeTableViewController: BaseModuleViewController {
             self.tableView.reloadData()
         }
     }
+    
+    // 定义行高缓存 [statusId: 行高]
+    lazy var rowHeightCache:[Int: CGFloat] = [Int: CGFloat]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +25,6 @@ class HomeTableViewController: BaseModuleViewController {
         visitorView?.setVisitorViewInfo("visitordiscover_feed_image_house", message: "关注一些人，回到这里看看有什么惊喜", isHome: true)
         
         tableView.registerClass(WeStatusCell.self, forCellReuseIdentifier: "statusCell")
-//        tableView.estimatedRowHeight = 200
-//        tableView.rowHeight = UITableViewAutomaticDimension
-        
         
         if UserAccount.isUserLogin {
             setupNavigationBar()
@@ -62,10 +62,22 @@ class HomeTableViewController: BaseModuleViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
+        // 1. 取到对象
+        let status = statuses![indexPath.row]
+        
+        // 1.1 判断是否缓存了行高，如果有直接返回
+//        if rowHeightCache[status.id] != nil {
+//            print("返回缓存行高...")
+//            return rowHeightCache[status.id]!
+//        }
+        
+        // 2. 获取 cell
         let cell = tableView.dequeueReusableCellWithIdentifier("statusCell") as! WeStatusCell
         
-        return cell.statusCellHeight(statuses![indexPath.row])
-    }
+        // 3. 返回行高
+        let height = cell.statusCellHeight(status)
+//        rowHeightCache[status.id] = height
+        return height    }
     
     
     /// 设置导航条

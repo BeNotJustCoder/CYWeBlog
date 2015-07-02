@@ -11,12 +11,10 @@ import SDWebImage
 
 private let CYPictureCellReuseIdentifier = "pictureCell"
 private let layoutMargin:CGFloat = 12
+
 class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
     
-    var picViewWidthCons:NSLayoutConstraint?
-    var picViewHeightCons:NSLayoutConstraint?
-    
-    
+    // MARK: - 数据模型
     /// 设置数据模型
     var status:WeStatus?{
         didSet{
@@ -62,9 +60,12 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
     }
     
     
-    // 构造方法
+    // MARK: - 构造方法
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        // 屏幕宽度
+        let screenWidth = UIScreen.mainScreen().bounds.width
         
         addSubview(iconView)        // 头像
         addSubview(nameLabel)       // 用户名
@@ -74,6 +75,8 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
         addSubview(commentLabel)    // 评论
         addSubview(pictureView)     // 配图视图
         preparePictureView()
+        addSubview(footerView)
+        footerView.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         
         iconView.ff_AlignInner(ff_AlignType.TopLeft, referView: self, size: CGSize(width: 34, height: 34), offset: CGPoint(x: 12, y: 12))
         nameLabel.ff_AlignHorizontal(ff_AlignType.TopRight, referView: iconView, size: nil, offset: CGPoint(x: 12, y: 0))
@@ -91,6 +94,9 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
         picViewWidthCons = pictureView.ff_Constraint(cons, attribute: NSLayoutAttribute.Width)
         picViewHeightCons = pictureView.ff_Constraint(cons, attribute: NSLayoutAttribute.Height)
         
+        // 页脚视图
+        footerView.ff_AlignVertical(ff_AlignType.BottomLeft, referView: pictureView, size: CGSize(width: screenWidth, height: 44), offset: CGPoint(x: -12, y: 12))
+        
         selectionStyle = UITableViewCellSelectionStyle.None
     }
 
@@ -107,10 +113,16 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CYPictureCellReuseIdentifier, forIndexPath: indexPath) as! StatusPictureCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CYPictureCellReuseIdentifier, forIndexPath: indexPath)
         
-        cell.imageURL = status!.thumbImageURLs![indexPath.item]
-        cell.backgroundColor = UIColor.redColor()
+        let imgURL = status!.thumbImageURLs![indexPath.item]
+        let imageView: UIImageView = UIImageView()
+        
+        imageView.contentMode = UIViewContentMode.ScaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.sd_setImageWithURL(imgURL)
+        
+        cell.backgroundView = imageView
         
         return cell
     }
@@ -122,7 +134,7 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
         
         layoutIfNeeded()
         
-        return CGRectGetMaxY(pictureView.frame) + layoutMargin
+        return CGRectGetMaxY(footerView.frame) + layoutMargin
     }
     
     ///  根据微博模型计算图片是的大小
@@ -186,12 +198,13 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
         pictureView.dataSource = self
         
         // 3. 注册可重用cell
-        pictureView.registerClass(StatusPictureCell.self, forCellWithReuseIdentifier: CYPictureCellReuseIdentifier)
+        pictureView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: CYPictureCellReuseIdentifier)
         // 4. 设置 layout
         pictureLayout.minimumInteritemSpacing = 4
         pictureLayout.minimumLineSpacing = 4
     }
 
+    // MARK: - 私有属性和成员变量
     /// 懒加载
     lazy var iconView = UIImageView()
     lazy var nameLabel = UILabel(color: UIColor.darkGrayColor(), fontSize: 14)
@@ -203,27 +216,62 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
     // 图像视图 - UICollectionView
     lazy var pictureLayout = UICollectionViewFlowLayout()
     lazy var pictureView: UICollectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: self.pictureLayout)
+    
+    // 页脚视图
+    // 页脚视图 - 使用 私有类的 var 同样需要 private
+    private lazy var footerView: StatusFooterView = StatusFooterView()
+    private var picViewWidthCons:NSLayoutConstraint?
+    private var picViewHeightCons:NSLayoutConstraint?
 }
 
-
-private class StatusPictureCell: UICollectionViewCell {
-    
-    var imageURL: NSURL? {
-        didSet {
-            iconView.sd_setImageWithURL(imageURL!)
-//            iconView.image = UIImage(named: "AppIcon")
-        }
-    }
-    
-    lazy var iconView: UIImageView = UIImageView(image: UIImage(named:"914387a9affa2a3fd15be0e8517c0704"))
+/// 页脚视图
+private class StatusFooterView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(iconView)
-        iconView.ff_Fill(self)
+        addSubview(forwardBtn)
+        addSubview(commentBtn)
+        addSubview(likeBtn)
+        
+        // 布局，水平平铺
+        ff_HorizontalTile([forwardBtn, commentBtn, likeBtn], insets: UIEdgeInsetsZero)
     }
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    lazy var forwardBtn: UIButton = {
+        let btn = UIButton()
+        
+        btn.setTitle("转发", forState: UIControlState.Normal)
+        btn.setImage(UIImage(named: "timeline_icon_retweet"), forState: UIControlState.Normal)
+        btn.titleLabel?.font = UIFont.systemFontOfSize(12)
+        btn.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+        
+        return btn
+        }()
+    
+    lazy var commentBtn: UIButton = {
+        let btn = UIButton()
+        
+        btn.setTitle("评论", forState: UIControlState.Normal)
+        btn.setImage(UIImage(named: "timeline_icon_comment"), forState: UIControlState.Normal)
+        btn.titleLabel?.font = UIFont.systemFontOfSize(12)
+        btn.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+        
+        return btn
+        }()
+    
+    lazy var likeBtn: UIButton = {
+        let btn = UIButton()
+        
+        btn.setTitle("点赞", forState: UIControlState.Normal)
+        btn.setImage(UIImage(named: "timeline_icon_unlike"), forState: UIControlState.Normal)
+        btn.titleLabel?.font = UIFont.systemFontOfSize(12)
+        btn.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+        
+        return btn
+        }()
 }
