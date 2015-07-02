@@ -67,6 +67,12 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
         // 屏幕宽度
         let screenWidth = UIScreen.mainScreen().bounds.width
         
+        // 顶部视图
+        let topView = UIView()
+        topView.backgroundColor = UIColor(white: 0.8, alpha: 0.6)
+        addSubview(topView)
+        topView.ff_AlignInner(ff_AlignType.TopLeft, referView: self, size: CGSize(width: screenWidth, height: 10))
+        
         addSubview(iconView)        // 头像
         addSubview(nameLabel)       // 用户名
         addSubview(memberIconView)  // 是否是会员
@@ -78,7 +84,7 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
         addSubview(footerView)
         footerView.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         
-        iconView.ff_AlignInner(ff_AlignType.TopLeft, referView: self, size: CGSize(width: 34, height: 34), offset: CGPoint(x: 12, y: 12))
+        iconView.ff_AlignInner(ff_AlignType.TopLeft, referView: self, size: CGSize(width: 34, height: 34), offset: CGPoint(x: 12, y: 22))
         nameLabel.ff_AlignHorizontal(ff_AlignType.TopRight, referView: iconView, size: nil, offset: CGPoint(x: 12, y: 0))
         memberIconView.ff_AlignHorizontal(ff_AlignType.CenterRight, referView: nameLabel, size: nil, offset: CGPoint(x: 4, y: 0))
         vipIconView.ff_AlignInner(ff_AlignType.BottomRight, referView: iconView, size: nil, offset: CGPoint(x: 8, y: 8))
@@ -134,7 +140,7 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
         
         layoutIfNeeded()
         
-        return CGRectGetMaxY(footerView.frame) + layoutMargin
+        return CGRectGetMaxY(footerView.frame)
     }
     
     ///  根据微博模型计算图片是的大小
