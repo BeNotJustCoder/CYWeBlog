@@ -22,8 +22,9 @@ class HomeTableViewController: BaseModuleViewController {
         visitorView?.setVisitorViewInfo("visitordiscover_feed_image_house", message: "关注一些人，回到这里看看有什么惊喜", isHome: true)
         
         tableView.registerClass(WeStatusCell.self, forCellReuseIdentifier: "statusCell")
-        tableView.estimatedRowHeight = 200
-        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.estimatedRowHeight = 200
+//        tableView.rowHeight = UITableViewAutomaticDimension
+        
         
         if UserAccount.isUserLogin {
             setupNavigationBar()
@@ -59,9 +60,12 @@ class HomeTableViewController: BaseModuleViewController {
         return cell
     }
     
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 200
-//    }
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("statusCell") as! WeStatusCell
+        
+        return cell.statusCellHeight(statuses![indexPath.row])
+    }
     
     
     /// 设置导航条

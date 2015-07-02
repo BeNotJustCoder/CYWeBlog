@@ -10,11 +10,14 @@ import UIKit
 import SDWebImage
 
 private let CYPictureCellReuseIdentifier = "pictureCell"
+private let layoutMargin:CGFloat = 12
 class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
     
     var picViewWidthCons:NSLayoutConstraint?
     var picViewHeightCons:NSLayoutConstraint?
     
+    
+    /// 设置数据模型
     var status:WeStatus?{
         didSet{
             let user = status!.user!
@@ -53,9 +56,13 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
             picViewHeightCons?.constant = result.viewSize.height
             picViewWidthCons?.constant = result.viewSize.width
             pictureLayout.itemSize = result.itemSize
+            
+            pictureView.reloadData()
         }
     }
     
+    
+    // 构造方法
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -79,16 +86,43 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
         
         // 配图视图
         let cons = pictureView.ff_AlignVertical(ff_AlignType.BottomLeft, referView: commentLabel, size: CGSize(width: 290, height: 90), offset: CGPoint(x: 0, y: 12))
-        pictureView.ff_AlignInner(ff_AlignType.BottomLeft, referView: self, size: nil, offset: CGPoint(x: 12, y: -8))
+//        pictureView.ff_AlignInner(ff_AlignType.BottomLeft, referView: self, size: nil, offset: CGPoint(x: 12, y: -8))
         // 记录宽高约束
         picViewWidthCons = pictureView.ff_Constraint(cons, attribute: NSLayoutAttribute.Width)
         picViewHeightCons = pictureView.ff_Constraint(cons, attribute: NSLayoutAttribute.Height)
         
-        
+        selectionStyle = UITableViewCellSelectionStyle.None
     }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    
+    /// collectionView 的数据源方法
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        print(status?.thumbImageURLs?.count ?? 0)
+        return status?.thumbImageURLs?.count ?? 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CYPictureCellReuseIdentifier, forIndexPath: indexPath) as! StatusPictureCell
+        
+        cell.imageURL = status!.thumbImageURLs![indexPath.item]
+        cell.backgroundColor = UIColor.redColor()
+        
+        return cell
+    }
+    
+    /// 计算方法
+    func statusCellHeight(status: WeStatus) -> (CGFloat) {
+        
+        self.status = status
+        
+        layoutIfNeeded()
+        
+        return CGRectGetMaxY(pictureView.frame) + layoutMargin
     }
     
     ///  根据微博模型计算图片是的大小
@@ -147,7 +181,7 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
     ///  准备配图视图图
     private func preparePictureView() {
         // 1. 设置背景颜色
-        pictureView.backgroundColor = UIColor.lightGrayColor()
+        pictureView.backgroundColor = UIColor.whiteColor()
         // 2. 数据源
         pictureView.dataSource = self
         
@@ -156,19 +190,6 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
         // 4. 设置 layout
         pictureLayout.minimumInteritemSpacing = 4
         pictureLayout.minimumLineSpacing = 4
-    }
-    
-    /// collectionView 的数据源方法
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return status?.thumbImageURLs?.count ?? 0
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CYPictureCellReuseIdentifier, forIndexPath: indexPath) as! StatusPictureCell
-        
-        cell.imageURL = status!.thumbImageURLs![indexPath.item]
-        
-        return cell
     }
 
     /// 懒加载
@@ -190,10 +211,11 @@ private class StatusPictureCell: UICollectionViewCell {
     var imageURL: NSURL? {
         didSet {
             iconView.sd_setImageWithURL(imageURL!)
+//            iconView.image = UIImage(named: "AppIcon")
         }
     }
     
-    var iconView: UIImageView = UIImageView()
+    lazy var iconView: UIImageView = UIImageView(image: UIImage(named:"914387a9affa2a3fd15be0e8517c0704"))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -201,7 +223,6 @@ private class StatusPictureCell: UICollectionViewCell {
         addSubview(iconView)
         iconView.ff_Fill(self)
     }
-    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

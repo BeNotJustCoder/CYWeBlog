@@ -27,6 +27,7 @@
 		BE789FF41B39462300E4C189 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FF31B39462300E4C189 /* MessageTableViewController.swift */; };
 		BE789FF61B39462E00E4C189 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FF51B39462E00E4C189 /* ProfileTableViewController.swift */; };
 		BE85DB2D1B3C283500DA7B62 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE85DB2C1B3C283500DA7B62 /* OAuthViewController.swift */; };
+		BEA2FFEE1B4528C300E5D3C0 /* PullRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA2FFED1B4528C300E5D3C0 /* PullRefreshControl.swift */; };
 		BEA9DFA01B3FF22700143EA4 /* HomeTitleNavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA9DF9F1B3FF22700143EA4 /* HomeTitleNavButton.swift */; };
 		BEA9DFA31B400E8500143EA4 /* TitlePopoverViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEA9DFA21B400E8500143EA4 /* TitlePopoverViewController.storyboard */; };
 		BEA9DFA51B401B4000143EA4 /* PopoverPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA9DFA41B401B4000143EA4 /* PopoverPresentationController.swift */; };
@@ -100,6 +101,7 @@
 		BE789FF31B39462300E4C189 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		BE789FF51B39462E00E4C189 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		BE85DB2C1B3C283500DA7B62 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
+		BEA2FFED1B4528C300E5D3C0 /* PullRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRefreshControl.swift; sourceTree = "<group>"; };
 		BEA9DF9F1B3FF22700143EA4 /* HomeTitleNavButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTitleNavButton.swift; sourceTree = "<group>"; };
 		BEA9DFA21B400E8500143EA4 /* TitlePopoverViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TitlePopoverViewController.storyboard; sourceTree = "<group>"; };
 		BEA9DFA41B401B4000143EA4 /* PopoverPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverPresentationController.swift; sourceTree = "<group>"; };
@@ -148,12 +150,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		BE0AFE631B439C0300C36337 /* Cell */ = {
+		BE0AFE631B439C0300C36337 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				BE0AFE641B439C2200C36337 /* WeStatusCell.swift */,
+				BEA2FFED1B4528C300E5D3C0 /* PullRefreshControl.swift */,
 			);
-			name = Cell;
+			name = View;
 			sourceTree = "<group>";
 		};
 		BE4E31041B3E9B2A0092F62F /* NewFeature */ = {
@@ -269,7 +272,7 @@
 		BE789FE71B39441200E4C189 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				BE0AFE631B439C0300C36337 /* Cell */,
+				BE0AFE631B439C0300C36337 /* View */,
 				BE5439E51B418479003A26C3 /* QRCode */,
 				BEA9DFA11B400DF600143EA4 /* Menu */,
 				BE789FEF1B39460700E4C189 /* HomeTableViewController.swift */,
@@ -539,6 +542,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE0AFE671B43BF2500C36337 /* UIView+AutoLayout.swift in Sources */,
+				BEA2FFEE1B4528C300E5D3C0 /* PullRefreshControl.swift in Sources */,
 				BE789FF61B39462E00E4C189 /* ProfileTableViewController.swift in Sources */,
 				BEF0139E1B42ADC800FFF7FA /* WeStatus.swift in Sources */,
 				BEA9DFA51B401B4000143EA4 /* PopoverPresentationController.swift in Sources */,

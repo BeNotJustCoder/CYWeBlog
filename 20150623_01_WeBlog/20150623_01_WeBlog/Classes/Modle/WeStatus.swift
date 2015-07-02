@@ -106,7 +106,7 @@ class WeStatus: NSObject {
         }
         
         dispatch_group_notify(group, dispatch_get_main_queue()) {
-//            print("缓存结束 \(NSHomeDirectory())")
+            print("缓存结束 \(NSHomeDirectory())")
             finished(weStatus: statuses, error: nil)
         }
         
