@@ -19,6 +19,7 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
     // 页脚视图
     lazy var footerView: StatusFooterView = StatusFooterView()
 
+    var forwardLabel:UILabel?
     // MARK: - 数据模型
     /// 设置数据模型
     var status:WeStatus?{
@@ -60,6 +61,9 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
             picViewWidthCons?.constant = result.viewSize.width
             pictureLayout.itemSize = result.itemSize
             
+            // 设置转发文字
+            forwardLabel?.text = (status?.retweeted_status?.user?.name ?? "") + ": " + (status?.retweeted_status?.text ?? "")
+            
             pictureView.reloadData()
         }
     }
@@ -97,12 +101,6 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
         commentLabel.ff_AlignVertical(ff_AlignType.BottomLeft, referView: iconView, size: nil, offset: CGPoint(x: 0, y: 12))
         commentLabel.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 16
         
-        // 配图视图
-//        let cons = pictureView.ff_AlignVertical(ff_AlignType.BottomLeft, referView: commentLabel, size: CGSize(width: 290, height: 90), offset: CGPoint(x: 0, y: 12))
-//        // 记录宽高约束
-//        picViewWidthCons = pictureView.ff_Constraint(cons, attribute: NSLayoutAttribute.Width)
-//        picViewHeightCons = pictureView.ff_Constraint(cons, attribute: NSLayoutAttribute.Height)
-        
         // 页脚视图
         footerView.ff_AlignVertical(ff_AlignType.BottomLeft, referView: pictureView, size: CGSize(width: screenWidth, height: 44), offset: CGPoint(x: -12, y: 12))
         
@@ -112,8 +110,6 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
     
     /// collectionView 的数据源方法
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

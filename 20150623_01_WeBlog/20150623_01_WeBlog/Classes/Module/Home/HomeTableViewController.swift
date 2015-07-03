@@ -8,6 +8,9 @@
 
 import UIKit
 
+let WBReuseIdentifierForNormalCell = "WBReuseIdentifierForNormalCell"
+let WBReuseIdentifierForForwardCell = "WBReuseIdentifierForForwardCell"
+
 class HomeTableViewController: BaseModuleViewController {
     var isTitlePresenting:Bool = false
     var statuses:[WeStatus]?{
@@ -28,7 +31,8 @@ class HomeTableViewController: BaseModuleViewController {
         
         if UserAccount.isUserLogin {
             
-            tableView.registerClass(WeStatusForwardCell.self, forCellReuseIdentifier: "statusCell")
+            tableView.registerClass(WeStatusForwardCell.self, forCellReuseIdentifier: WBReuseIdentifierForForwardCell)
+            tableView.registerClass(WeStatusNormalCell.self, forCellReuseIdentifier: WBReuseIdentifierForNormalCell)
             tableView.separatorStyle = UITableViewCellSeparatorStyle.None
             
             setupNavigationBar()
@@ -57,7 +61,9 @@ class HomeTableViewController: BaseModuleViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("statusCell", forIndexPath: indexPath) as! WeStatusForwardCell
+        let status = statuses![indexPath.row]
+        let reuseID = status.retweeted_status == nil ? WBReuseIdentifierForNormalCell : WBReuseIdentifierForForwardCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseID, forIndexPath: indexPath) as! WeStatusCell
 //        cell.textLabel?.text = statuses![indexPath.row].text
         cell.status = statuses![indexPath.row]
         
@@ -76,7 +82,8 @@ class HomeTableViewController: BaseModuleViewController {
 //        }
         
         // 2. 获取 cell
-        let cell = tableView.dequeueReusableCellWithIdentifier("statusCell") as! WeStatusCell
+        let reuseID = status.retweeted_status == nil ? WBReuseIdentifierForNormalCell : WBReuseIdentifierForForwardCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseID) as! WeStatusCell
         
         // 3. 返回行高
         let height = cell.statusCellHeight(status)

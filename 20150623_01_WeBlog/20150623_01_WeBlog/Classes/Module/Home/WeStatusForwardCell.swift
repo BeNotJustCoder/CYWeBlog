@@ -13,21 +13,21 @@ class WeStatusForwardCell: WeStatusCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        insertSubview(forwardLabel, atIndex: 0)
+        forwardLabel = UILabel(color: UIColor.darkGrayColor(), fontSize: 14, mutiLines: true)
+        insertSubview(forwardLabel!, atIndex: 0)
         
         insertSubview(forwardButton, atIndex: 0)
         
         // 自动布局
-        forwardLabel.text = "转发微博转发微博转发微博转发微博转发微博转发微博转发微博转发微博转发微博转发微博"
-        forwardLabel.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 16
-        forwardLabel.ff_AlignInner(ff_AlignType.TopLeft, referView: forwardButton, size: nil, offset: CGPoint(x: 12, y: 12))
+        forwardLabel!.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 16
+        forwardLabel!.ff_AlignInner(ff_AlignType.TopLeft, referView: forwardButton, size: nil, offset: CGPoint(x: 12, y: 12))
         
         // 背景按钮
         forwardButton.ff_AlignVertical(ff_AlignType.BottomLeft, referView: commentLabel, size: nil, offset: CGPoint(x: -12, y: 12))
         forwardButton.ff_AlignVertical(ff_AlignType.TopRight, referView: footerView, size: nil)
         
         // 重新设置配图视图
-        let cons = pictureView.ff_AlignVertical(ff_AlignType.BottomLeft, referView: forwardLabel, size: CGSizeMake(290, 90), offset: CGPoint(x: 0, y: 12))
+        let cons = pictureView.ff_AlignVertical(ff_AlignType.BottomLeft, referView: forwardLabel!, size: CGSizeMake(290, 90), offset: CGPoint(x: 0, y: 12))
         // 记录宽高约束
         picViewWidthCons = pictureView.ff_Constraint(cons, attribute: NSLayoutAttribute.Width)
         picViewHeightCons = pictureView.ff_Constraint(cons, attribute: NSLayoutAttribute.Height)
@@ -37,8 +37,6 @@ class WeStatusForwardCell: WeStatusCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // 转发
-    lazy var forwardLabel = UILabel(color: UIColor.darkGrayColor(), fontSize: 14, mutiLines: true)
 
     lazy var forwardButton:UIButton = {
         let btn = UIButton(type: UIButtonType.System)
