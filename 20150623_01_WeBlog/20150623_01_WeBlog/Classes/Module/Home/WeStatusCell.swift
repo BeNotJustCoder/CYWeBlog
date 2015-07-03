@@ -118,13 +118,13 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
     /// collectionView 的数据源方法
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //        print(status?.thumbImageURLs?.count ?? 0)
-        return status?.thumbImageURLs?.count ?? 0
+        return status?.imgURLs?.count ?? 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CYPictureCellReuseIdentifier, forIndexPath: indexPath)
         
-        let imgURL = status!.thumbImageURLs![indexPath.item]
+        let imgURL = status!.imgURLs![indexPath.item]
         let imageView: UIImageView = UIImageView()
         
         imageView.contentMode = UIViewContentMode.ScaleAspectFill
@@ -157,7 +157,7 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
     private func calcPictureViewSize(status: WeStatus) -> (viewSize: CGSize, itemSize: CGSize) {
         
         // 0. 获取图片数量
-        let count = status.thumbImageURLs?.count ?? 0
+        let count = status.imgURLs?.count ?? 0
         let itemSize = CGSize(width: 90, height: 90)
         let margin: CGFloat = 4
         
@@ -170,7 +170,7 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
         if count == 1 {
             // 1> 从缓存`拿到`并且创建 image
             // key 就是 url 的完整字符串，sdwebimage缓存图片文件名是对 url 的完整字符串 md5
-            let key = status.thumbImageURLs![0].absoluteString
+            let key = status.imgURLs![0].absoluteString
             let image = SDWebImageManager.sharedManager().imageCache.imageFromDiskCacheForKey(key)
             
             print("单张图片 \(key) \(image.size)")
