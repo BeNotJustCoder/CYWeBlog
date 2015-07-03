@@ -23,10 +23,14 @@ class HomeTableViewController: BaseModuleViewController {
         super.viewDidLoad()
 
         visitorView?.setVisitorViewInfo("visitordiscover_feed_image_house", message: "关注一些人，回到这里看看有什么惊喜", isHome: true)
+        print(WeStatusCell.self)
         
-        tableView.registerClass(WeStatusCell.self, forCellReuseIdentifier: "statusCell")
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
         if UserAccount.isUserLogin {
+            
+            tableView.registerClass(WeStatusCell.self, forCellReuseIdentifier: "statusCell")
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+            
             setupNavigationBar()
             
             loadData()
