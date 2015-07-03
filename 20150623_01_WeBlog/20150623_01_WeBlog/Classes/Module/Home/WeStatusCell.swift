@@ -13,7 +13,12 @@ private let CYPictureCellReuseIdentifier = "pictureCell"
 private let layoutMargin:CGFloat = 12
 
 class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
+    var picViewWidthCons:NSLayoutConstraint?
+    var picViewHeightCons:NSLayoutConstraint?
     
+    // 页脚视图
+    lazy var footerView: StatusFooterView = StatusFooterView()
+
     // MARK: - 数据模型
     /// 设置数据模型
     var status:WeStatus?{
@@ -69,7 +74,7 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
         
         // 顶部视图
         let topView = UIView()
-        topView.backgroundColor = UIColor(white: 0.8, alpha: 0.6)
+        topView.backgroundColor = UIColor(white: 0.8, alpha: 1.0)
         addSubview(topView)
         topView.ff_AlignInner(ff_AlignType.TopLeft, referView: self, size: CGSize(width: screenWidth, height: 10))
         
@@ -90,15 +95,13 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
         vipIconView.ff_AlignInner(ff_AlignType.BottomRight, referView: iconView, size: nil, offset: CGPoint(x: 8, y: 8))
         timeLabel.ff_AlignHorizontal(ff_AlignType.BottomRight, referView: iconView, size: nil, offset: CGPoint(x: 12, y: 0))
         commentLabel.ff_AlignVertical(ff_AlignType.BottomLeft, referView: iconView, size: nil, offset: CGPoint(x: 0, y: 12))
-//        commentLabel.ff_AlignInner(ff_AlignType.BottomRight, referView: self, size: nil, offset: CGPoint(x: -4, y: -8))
         commentLabel.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 16
         
         // 配图视图
-        let cons = pictureView.ff_AlignVertical(ff_AlignType.BottomLeft, referView: commentLabel, size: CGSize(width: 290, height: 90), offset: CGPoint(x: 0, y: 12))
-//        pictureView.ff_AlignInner(ff_AlignType.BottomLeft, referView: self, size: nil, offset: CGPoint(x: 12, y: -8))
-        // 记录宽高约束
-        picViewWidthCons = pictureView.ff_Constraint(cons, attribute: NSLayoutAttribute.Width)
-        picViewHeightCons = pictureView.ff_Constraint(cons, attribute: NSLayoutAttribute.Height)
+//        let cons = pictureView.ff_AlignVertical(ff_AlignType.BottomLeft, referView: commentLabel, size: CGSize(width: 290, height: 90), offset: CGPoint(x: 0, y: 12))
+//        // 记录宽高约束
+//        picViewWidthCons = pictureView.ff_Constraint(cons, attribute: NSLayoutAttribute.Width)
+//        picViewHeightCons = pictureView.ff_Constraint(cons, attribute: NSLayoutAttribute.Height)
         
         // 页脚视图
         footerView.ff_AlignVertical(ff_AlignType.BottomLeft, referView: pictureView, size: CGSize(width: screenWidth, height: 44), offset: CGPoint(x: -12, y: 12))
@@ -223,15 +226,11 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
     lazy var pictureLayout = UICollectionViewFlowLayout()
     lazy var pictureView: UICollectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: self.pictureLayout)
     
-    // 页脚视图
-    // 页脚视图 - 使用 私有类的 var 同样需要 private
-    private lazy var footerView: StatusFooterView = StatusFooterView()
-    private var picViewWidthCons:NSLayoutConstraint?
-    private var picViewHeightCons:NSLayoutConstraint?
+    
 }
 
 /// 页脚视图
-private class StatusFooterView: UIView {
+class StatusFooterView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

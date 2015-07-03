@@ -28,7 +28,7 @@ class HomeTableViewController: BaseModuleViewController {
         
         if UserAccount.isUserLogin {
             
-            tableView.registerClass(WeStatusCell.self, forCellReuseIdentifier: "statusCell")
+            tableView.registerClass(WeStatusForwardCell.self, forCellReuseIdentifier: "statusCell")
             tableView.separatorStyle = UITableViewCellSeparatorStyle.None
             
             setupNavigationBar()
@@ -57,7 +57,7 @@ class HomeTableViewController: BaseModuleViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("statusCell", forIndexPath: indexPath) as! WeStatusCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("statusCell", forIndexPath: indexPath) as! WeStatusForwardCell
 //        cell.textLabel?.text = statuses![indexPath.row].text
         cell.status = statuses![indexPath.row]
         
