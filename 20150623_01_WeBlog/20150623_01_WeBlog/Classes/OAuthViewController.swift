@@ -69,7 +69,8 @@ class OAuthViewController: UIViewController,UIWebViewDelegate {
             loadAccessToken(code!)
         }
         else {
-            closeOAuth()
+            let error = NSError(domain: "没有得到token", code: 180501, userInfo: nil)
+            closeOAuth(error)
         }
         return false //不继续加载
     }
@@ -100,25 +101,36 @@ class OAuthViewController: UIViewController,UIWebViewDelegate {
 //                    print(account)
                     
                     NSNotificationCenter.defaultCenter().postNotificationName(SwitchRootVCNotification, object: false)
+                    self.closeOAuth(nil)
+                    
                 }
                 else {
-                    print(error)
+                    
+//                    print(error)
+                    self.closeOAuth(error)
                 }
             })
             
-            
-            self.closeOAuth()
-            
             }) { (_, error) -> Void in
 //                print(error)
-                SVProgressHUD.showInfoWithStatus("您的网络不给力")
+                
+                self.closeOAuth(error)
         }
     }
     
     
     
-    func closeOAuth(){
-        SVProgressHUD.dismiss()
+    func closeOAuth(error:NSError?){
+        
+        
+        if error == nil {
+            SVProgressHUD.showSuccessWithStatus("登录成功!")
+            dismissViewControllerAnimated(true, completion: nil)
+            return
+        }
+        
+        print(error)
+        SVProgressHUD.showInfoWithStatus("您的网络不给力")
         dismissViewControllerAnimated(true, completion: nil)
     }
 

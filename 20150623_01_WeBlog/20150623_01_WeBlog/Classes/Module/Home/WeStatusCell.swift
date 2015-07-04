@@ -243,36 +243,8 @@ class StatusFooterView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    lazy var forwardBtn: UIButton = {
-        let btn = UIButton()
-        
-        btn.setTitle("转发", forState: UIControlState.Normal)
-        btn.setImage(UIImage(named: "timeline_icon_retweet"), forState: UIControlState.Normal)
-        btn.titleLabel?.font = UIFont.systemFontOfSize(12)
-        btn.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
-        
-        return btn
-        }()
-    
-    lazy var commentBtn: UIButton = {
-        let btn = UIButton()
-        
-        btn.setTitle("评论", forState: UIControlState.Normal)
-        btn.setImage(UIImage(named: "timeline_icon_comment"), forState: UIControlState.Normal)
-        btn.titleLabel?.font = UIFont.systemFontOfSize(12)
-        btn.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
-        
-        return btn
-        }()
-    
-    lazy var likeBtn: UIButton = {
-        let btn = UIButton()
-        
-        btn.setTitle("点赞", forState: UIControlState.Normal)
-        btn.setImage(UIImage(named: "timeline_icon_unlike"), forState: UIControlState.Normal)
-        btn.titleLabel?.font = UIFont.systemFontOfSize(12)
-        btn.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
-        
-        return btn
-        }()
+    lazy var forwardBtn:UIButton = UIButton(title: "转发", imageName: "timeline_icon_retweet", fontSize: 12, titleColor: UIColor.darkGrayColor())    
+    lazy var commentBtn:UIButton = UIButton(title: "评论", imageName: "timeline_icon_comment", fontSize: 12, titleColor: UIColor.darkGrayColor())
+    lazy var likeBtn:UIButton = UIButton(title: "点赞", imageName: "timeline_icon_unlike", fontSize: 12, titleColor: UIColor.darkGrayColor())
+
 }

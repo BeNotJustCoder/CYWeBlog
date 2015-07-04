@@ -21,6 +21,8 @@
 		BE4E31081B3EEEA20092F62F /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E31071B3EEEA20092F62F /* WelcomeViewController.swift */; };
 		BE5439E71B4184B6003A26C3 /* QRCodeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE5439E61B4184B6003A26C3 /* QRCodeViewController.storyboard */; };
 		BE5439E91B4184F4003A26C3 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5439E81B4184F4003A26C3 /* QRCodeViewController.swift */; };
+		BE5CFFE41B4834C9007B33EB /* PictureScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5CFFE31B4834C9007B33EB /* PictureScanViewController.swift */; };
+		BE5CFFE61B48351D007B33EB /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5CFFE51B48351D007B33EB /* UIButton+Ext.swift */; };
 		BE789FB61B3918EF00E4C189 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FB51B3918EF00E4C189 /* AppDelegate.swift */; };
 		BE789FBD1B3918EF00E4C189 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE789FBC1B3918EF00E4C189 /* Assets.xcassets */; };
 		BE789FCB1B3918EF00E4C189 /* _0150623_01_WeBlogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FCA1B3918EF00E4C189 /* _0150623_01_WeBlogTests.swift */; };
@@ -92,6 +94,8 @@
 		BE4E31071B3EEEA20092F62F /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		BE5439E61B4184B6003A26C3 /* QRCodeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QRCodeViewController.storyboard; sourceTree = "<group>"; };
 		BE5439E81B4184F4003A26C3 /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		BE5CFFE31B4834C9007B33EB /* PictureScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureScanViewController.swift; sourceTree = "<group>"; };
+		BE5CFFE51B48351D007B33EB /* UIButton+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		BE789FB21B3918EF00E4C189 /* WeBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE789FB51B3918EF00E4C189 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		BE789FBC1B3918EF00E4C189 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -184,6 +188,14 @@
 				BE5439E81B4184F4003A26C3 /* QRCodeViewController.swift */,
 			);
 			name = QRCode;
+			sourceTree = "<group>";
+		};
+		BE5CFFE21B483494007B33EB /* PictureScan */ = {
+			isa = PBXGroup;
+			children = (
+				BE5CFFE31B4834C9007B33EB /* PictureScanViewController.swift */,
+			);
+			name = PictureScan;
 			sourceTree = "<group>";
 		};
 		BE789FA91B3918EE00E4C189 = {
@@ -281,6 +293,7 @@
 		BE789FE71B39441200E4C189 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				BE5CFFE21B483494007B33EB /* PictureScan */,
 				BE0AFE631B439C0300C36337 /* View */,
 				BE5439E51B418479003A26C3 /* QRCode */,
 				BEA9DFA11B400DF600143EA4 /* Menu */,
@@ -325,6 +338,7 @@
 				BEF013A41B42C1EB00FFF7FA /* UIBarButtonItem+Ext.swift */,
 				BE0AFE661B43BF2500C36337 /* UIView+AutoLayout.swift */,
 				BE0AFE681B43C20A00C36337 /* UILabel+Ext.swift */,
+				BE5CFFE51B48351D007B33EB /* UIButton+Ext.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -555,6 +569,8 @@
 				BE07648E1B4774CF00D4E8B2 /* WBRefreshControl.swift in Sources */,
 				BE789FF61B39462E00E4C189 /* ProfileTableViewController.swift in Sources */,
 				BEF0139E1B42ADC800FFF7FA /* WeStatus.swift in Sources */,
+				BE5CFFE61B48351D007B33EB /* UIButton+Ext.swift in Sources */,
+				BE5CFFE41B4834C9007B33EB /* PictureScanViewController.swift in Sources */,
 				BEA9DFA51B401B4000143EA4 /* PopoverPresentationController.swift in Sources */,
 				BEDA79731B3DB2B0003E4DD0 /* NetworkTools.swift in Sources */,
 				BE5439E91B4184F4003A26C3 /* QRCodeViewController.swift in Sources */,

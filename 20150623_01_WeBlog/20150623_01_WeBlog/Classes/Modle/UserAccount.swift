@@ -48,19 +48,22 @@ class UserAccount: NSObject,NSCoding {
         if let account = NSKeyedUnarchiver.unarchiveObjectWithFile(accountFilePath) as? UserAccount {
             // 判断日期是否过期，根当前系统时间进行`比较`，低于当前系统时间，就认为过期
             // 过期日期`大于`当前日期，结果应该是降序
+            print("读取用户数据\(account)")
             if account.expiresDate.compare(NSDate()) == NSComparisonResult.OrderedDescending {
                 UserAccount.isUserLogin = true
+                
                 return account
             }
         }
-        
+        print("读取用户数据:nil")
         return nil
     }
     
     /// 保存到沙盒
     func saveAccount() {
         
-        NSKeyedArchiver.archiveRootObject(self, toFile: UserAccount.accountFilePath)
+        let res = NSKeyedArchiver.archiveRootObject(self, toFile: UserAccount.accountFilePath)
+        print("保存用户数据:\(res)")
     }
     
     
