@@ -51,12 +51,12 @@ class WBRefreshControl: UIRefreshControl {
         }
         
         if frame.origin.y < -2*bounds.height && !showTipFlag {
-            print("翻过来")
+//            print("翻过来")
             showTipFlag = true
             refreshView.rotateTipIcon(showTipFlag)
             refreshView.setupState(RefreshViewState.ToRelease)
-        } else if frame.origin.y >= -bounds.height/2 && showTipFlag {
-            print("转过去")
+        } else if frame.origin.y >= -bounds.height/9 && showTipFlag {
+//            print("转过去")
             showTipFlag = false
             refreshView.rotateTipIcon(showTipFlag)
             refreshView.setupState(RefreshViewState.ToPull)
