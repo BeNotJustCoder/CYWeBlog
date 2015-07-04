@@ -21,7 +21,7 @@ class HomeTableViewController: BaseModuleViewController {
     }
     
     // 定义行高缓存 [statusId: 行高]
-    lazy var rowHeightCache:[Int: CGFloat] = [Int: CGFloat]()
+    var cellHeightCache:[Int: CGFloat]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +37,8 @@ class HomeTableViewController: BaseModuleViewController {
             tableView.separatorStyle = UITableViewCellSeparatorStyle.None
             
             refreshControl = WBRefreshControl()
-//            let refreshView = UIView()
-//            refreshControl?.backgroundColor = UIColor.redColor()
-//            refreshControl?.addSubview(refreshView)
             refreshControl!.addTarget(self, action: "loadData", forControlEvents: UIControlEvents.ValueChanged)
+            cellHeightCache = [Int: CGFloat]()
             
             setupNavigationBar()
             
@@ -52,6 +50,13 @@ class HomeTableViewController: BaseModuleViewController {
         super.viewDidAppear(animated)
         
         visitorView?.startAnimation()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+        // 清空缓存，提示：NSCache 不能清空
+        cellHeightCache?.removeAll()
     }
     
     /// 表格的数据源和代理方法
@@ -98,18 +103,25 @@ class HomeTableViewController: BaseModuleViewController {
         let status = statuses![indexPath.row]
         
         // 1.1 判断是否缓存了行高，如果有直接返回
-//        if rowHeightCache[status.id] != nil {
-//            print("返回缓存行高...")
-//            return rowHeightCache[status.id]!
-//        }
+        if cellHeightCache![status.id] != nil {
+            print("返回缓存行高...")
+            return cellHeightCache![status.id]!
+        }
         
         // 2. 获取 cell
         let reuseID = status.retweeted_status == nil ? WBReuseIdentifierForNormalCell : WBReuseIdentifierForForwardCell
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseID) as! WeStatusCell
+//        let cell = tableView.dequeueReusableCellWithIdentifier(reuseID) as! WeStatusCell
+        
+        var cls: AnyClass = WeStatusNormalCell.self
+        if reuseID == WBReuseIdentifierForForwardCell {
+            cls = WeStatusForwardCell.self
+        }
+        // 根据 cls 创建 cell
+        let cell = cls.new() as! WeStatusCell
         
         // 3. 返回行高
         let height = cell.statusCellHeight(status)
-//        rowHeightCache[status.id] = height
+        cellHeightCache![status.id] = height
         return height    }
     
     
