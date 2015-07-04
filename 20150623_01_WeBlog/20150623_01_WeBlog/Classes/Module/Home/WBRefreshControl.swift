@@ -55,8 +55,7 @@ class WBRefreshControl: UIRefreshControl {
             showTipFlag = true
             refreshView.rotateTipIcon(showTipFlag)
             refreshView.setupState(RefreshViewState.ToRelease)
-        }// else if frame.origin.y >= -bounds.height && showTipFlag {
-        else if frame.origin.y == 0 && showTipFlag {
+        } else if frame.origin.y >= -bounds.height/2 && showTipFlag {
             print("转过去")
             showTipFlag = false
             refreshView.rotateTipIcon(showTipFlag)
@@ -141,10 +140,7 @@ class WBRefreshView : UIView {
     
     ///  停止动画
     private func stopLoadingAnimation() {
-//
-        
         loadingIconView.layer.removeAllAnimations()
-        
     }
     
     lazy var loadingIconView:UIImageView = {

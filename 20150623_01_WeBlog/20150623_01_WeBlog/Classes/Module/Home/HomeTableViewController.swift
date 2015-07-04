@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 let WBReuseIdentifierForNormalCell = "WBReuseIdentifierForNormalCell"
 let WBReuseIdentifierForForwardCell = "WBReuseIdentifierForForwardCell"
@@ -56,9 +57,22 @@ class HomeTableViewController: BaseModuleViewController {
     /// 表格的数据源和代理方法
     
     func loadData() {
-        WeStatus.loadStatus { (weStatus, error) -> () in
+        self.refreshControl?.beginRefreshing()
+        let since_id = statuses?.first?.id ?? 0
+        WeStatus.loadStatus(since_id) { (weStatus, error) -> () in
 //            print(weStatus)
-            self.statuses = weStatus
+            if error != nil {
+                SVProgressHUD.showInfoWithStatus("您的网络不给力")
+                return
+            }
+            
+            // 判断是否是下拉刷新，将新的数据，添加到原有数组的前面
+            if since_id > 0 {
+                self.statuses = weStatus! + self.statuses!
+            } else {
+                // 初始刷新
+                self.statuses = weStatus
+            }
             
             self.refreshControl?.endRefreshing()
         }

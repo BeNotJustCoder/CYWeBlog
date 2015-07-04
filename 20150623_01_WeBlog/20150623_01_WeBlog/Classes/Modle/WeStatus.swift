@@ -71,12 +71,20 @@ class WeStatus: NSObject {
         return "\(dict)"
     }
     
-    class func loadStatus(finished: (weStatus:[WeStatus]?, error:NSError?)->() ){
+    class func loadStatus(since_id: Int, finished: (weStatus:[WeStatus]?, error:NSError?)->() ){
         
-        let param = ["access_token" : shareUserAccount!.access_token]
+        var params = ["access_token" : shareUserAccount!.access_token]
         let url = "https://api.weibo.com/2/statuses/home_timeline.json"
         
-        NetworkTools.sharedNetworkTools().GET(url, parameters: param, success: { (_, jsonData) -> Void in
+        if since_id > 0 {
+            params["since_id"] = "\(since_id)"
+        }
+        
+//        if max_id > 0 {
+//            params["max_id"] = "\(max_id - 1)"
+//        }
+        
+        NetworkTools.sharedNetworkTools().GET(url, parameters: params, success: { (_, jsonData) -> Void in
 //            print(jsonData)
             
             let array = jsonData["statuses"] as! [[String : AnyObject]]
