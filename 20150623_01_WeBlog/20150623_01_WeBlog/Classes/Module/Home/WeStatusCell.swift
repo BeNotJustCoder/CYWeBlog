@@ -12,9 +12,16 @@ import SDWebImage
 private let CYPictureCellReuseIdentifier = "pictureCell"
 private let layoutMargin:CGFloat = 12
 
-class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
+protocol WeStatusCellDelegate : NSObjectProtocol {
+    //照片选中
+    func statusCellDidSelectedPhoto(cell: WeStatusCell, photoIndex: Int);
+}
+
+class WeStatusCell: UITableViewCell {
     var picViewWidthCons:NSLayoutConstraint?
     var picViewHeightCons:NSLayoutConstraint?
+    
+    var pictureDelegate:WeStatusCellDelegate?
     
     // 页脚视图
     lazy var footerView: StatusFooterView = StatusFooterView()
@@ -111,27 +118,7 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /// collectionView 的数据源方法
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        print(status?.thumbImageURLs?.count ?? 0)
-        return status?.imgURLs?.count ?? 0
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CYPictureCellReuseIdentifier, forIndexPath: indexPath)
-        
-        let imgURL = status!.imgURLs![indexPath.item]
-        let imageView: UIImageView = UIImageView()
-        
-        imageView.contentMode = UIViewContentMode.ScaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.sd_setImageWithURL(imgURL)
-        
-        cell.backgroundView = imageView
-        
-        return cell
-    }
-    
+
     /// 计算方法
     func statusCellHeight(status: WeStatus) -> (CGFloat) {
         
@@ -201,6 +188,7 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
         pictureView.backgroundColor = UIColor.whiteColor()
         // 2. 数据源
         pictureView.dataSource = self
+        pictureView.delegate = self
         
         // 3. 注册可重用cell
         pictureView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: CYPictureCellReuseIdentifier)
@@ -222,6 +210,36 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
     lazy var pictureLayout = UICollectionViewFlowLayout()
     lazy var pictureView: UICollectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: self.pictureLayout)
     
+    
+}
+
+extension WeStatusCell : UICollectionViewDataSource, UICollectionViewDelegate {
+    /// collectionView 的数据源方法
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //        print(status?.thumbImageURLs?.count ?? 0)
+        return status?.imgURLs?.count ?? 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CYPictureCellReuseIdentifier, forIndexPath: indexPath)
+        
+        let imgURL = status!.imgURLs![indexPath.item]
+        let imageView: UIImageView = UIImageView()
+        
+        imageView.contentMode = UIViewContentMode.ScaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.sd_setImageWithURL(imgURL)
+        
+        cell.backgroundView = imageView
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if pictureDelegate != nil {
+            pictureDelegate!.statusCellDidSelectedPhoto(self, photoIndex: 0)
+        }
+    }
     
 }
 

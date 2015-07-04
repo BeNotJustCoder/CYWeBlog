@@ -103,7 +103,8 @@ class HomeTableViewController: BaseModuleViewController {
         let status = statuses![indexPath.row]
         let reuseID = status.retweeted_status == nil ? WBReuseIdentifierForNormalCell : WBReuseIdentifierForForwardCell
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseID, forIndexPath: indexPath) as! WeStatusCell
-//        cell.textLabel?.text = statuses![indexPath.row].text
+        cell.pictureDelegate = self
+        
         cell.status = statuses![indexPath.row]
         
         if (indexPath.row == statuses!.count - 1) {
@@ -139,7 +140,8 @@ class HomeTableViewController: BaseModuleViewController {
         // 3. 返回行高
         let height = cell.statusCellHeight(status)
         cellHeightCache![status.id] = height
-        return height    }
+        return height
+    }
     
     
     /// 设置导航条
@@ -197,4 +199,15 @@ class HomeTableViewController: BaseModuleViewController {
     private var pullRefreshFlag = false
 
 
+}
+
+extension HomeTableViewController : WeStatusCellDelegate, UIViewControllerTransitioningDelegate {
+    func statusCellDidSelectedPhoto(cell: WeStatusCell, photoIndex: Int) {
+        let vc = PictureScanViewController()
+        
+        vc.transitioningDelegate = self
+        
+        
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
 }
