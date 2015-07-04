@@ -35,6 +35,12 @@ class HomeTableViewController: BaseModuleViewController {
             tableView.registerClass(WeStatusNormalCell.self, forCellReuseIdentifier: WBReuseIdentifierForNormalCell)
             tableView.separatorStyle = UITableViewCellSeparatorStyle.None
             
+            refreshControl = WBRefreshControl()
+//            let refreshView = UIView()
+//            refreshControl?.backgroundColor = UIColor.redColor()
+//            refreshControl?.addSubview(refreshView)
+            refreshControl!.addTarget(self, action: "loadData", forControlEvents: UIControlEvents.ValueChanged)
+            
             setupNavigationBar()
             
             loadData()
@@ -53,6 +59,8 @@ class HomeTableViewController: BaseModuleViewController {
         WeStatus.loadStatus { (weStatus, error) -> () in
 //            print(weStatus)
             self.statuses = weStatus
+            
+            self.refreshControl?.endRefreshing()
         }
     }
     
@@ -143,6 +151,5 @@ class HomeTableViewController: BaseModuleViewController {
     }
     
     
-    ///懒加载
 
 }

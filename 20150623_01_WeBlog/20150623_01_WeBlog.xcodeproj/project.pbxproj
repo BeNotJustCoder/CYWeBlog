@@ -10,6 +10,7 @@
 		1ADC60AF6A69B3D4AFC2F6D8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841D0FF66A82D10C96008CFC /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BE07648A1B46CE2200D4E8B2 /* WeStatusForwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0764891B46CE2200D4E8B2 /* WeStatusForwardCell.swift */; };
 		BE07648C1B46FB3100D4E8B2 /* WeStatusNormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE07648B1B46FB3100D4E8B2 /* WeStatusNormalCell.swift */; };
+		BE07648E1B4774CF00D4E8B2 /* WBRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE07648D1B4774CF00D4E8B2 /* WBRefreshControl.swift */; };
 		BE0AFE651B439C2200C36337 /* WeStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0AFE641B439C2200C36337 /* WeStatusCell.swift */; };
 		BE0AFE671B43BF2500C36337 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0AFE661B43BF2500C36337 /* UIView+AutoLayout.swift */; };
 		BE0AFE691B43C20A00C36337 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0AFE681B43C20A00C36337 /* UILabel+Ext.swift */; };
@@ -80,6 +81,7 @@
 		8493124F9819627E9E1F0052 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BE0764891B46CE2200D4E8B2 /* WeStatusForwardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeStatusForwardCell.swift; sourceTree = "<group>"; };
 		BE07648B1B46FB3100D4E8B2 /* WeStatusNormalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeStatusNormalCell.swift; sourceTree = "<group>"; };
+		BE07648D1B4774CF00D4E8B2 /* WBRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBRefreshControl.swift; sourceTree = "<group>"; };
 		BE0AFE641B439C2200C36337 /* WeStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeStatusCell.swift; sourceTree = "<group>"; };
 		BE0AFE661B43BF2500C36337 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		BE0AFE681B43C20A00C36337 /* UILabel+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				BEA2FFED1B4528C300E5D3C0 /* PullRefreshControl.swift */,
 				BE0764891B46CE2200D4E8B2 /* WeStatusForwardCell.swift */,
 				BE07648B1B46FB3100D4E8B2 /* WeStatusNormalCell.swift */,
+				BE07648D1B4774CF00D4E8B2 /* WBRefreshControl.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 			files = (
 				BE0AFE671B43BF2500C36337 /* UIView+AutoLayout.swift in Sources */,
 				BEA2FFEE1B4528C300E5D3C0 /* PullRefreshControl.swift in Sources */,
+				BE07648E1B4774CF00D4E8B2 /* WBRefreshControl.swift in Sources */,
 				BE789FF61B39462E00E4C189 /* ProfileTableViewController.swift in Sources */,
 				BEF0139E1B42ADC800FFF7FA /* WeStatus.swift in Sources */,
 				BEA9DFA51B401B4000143EA4 /* PopoverPresentationController.swift in Sources */,

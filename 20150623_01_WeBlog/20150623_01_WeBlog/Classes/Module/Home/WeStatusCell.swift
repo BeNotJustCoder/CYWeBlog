@@ -169,7 +169,7 @@ class WeStatusCell: UITableViewCell, UICollectionViewDataSource {
             let key = status.imgURLs![0].absoluteString
             let image = SDWebImageManager.sharedManager().imageCache.imageFromDiskCacheForKey(key)
             
-            print("单张图片 \(key) \(image.size)")
+//            print("单张图片 \(key) \(image.size)")
             
             // 2> 返回 image.size
             return (image.size, image.size)
