@@ -23,8 +23,14 @@ class WeStatus: NSObject {
     var pic_urls: [[String: String]]? {
         didSet {
             thumbImageURLs = [NSURL]()
+            originalImageURLs = [NSURL]()
             for dict in pic_urls! {
-                thumbImageURLs?.append(NSURL(string: dict["thumbnail_pic"]!)!)
+                var urlString = dict["thumbnail_pic"]!
+                thumbImageURLs?.append(NSURL(string: urlString)!)
+                
+                urlString = urlString.stringByReplacingOccurrencesOfString("thumbnail", withString: "large")
+                // 大图 URL
+                originalImageURLs?.append(NSURL(string: urlString)!)
             }
         }
     }
@@ -40,6 +46,11 @@ class WeStatus: NSObject {
     /// 计算型属性
     var imgURLs:[NSURL]? {
         return retweeted_status == nil ? thumbImageURLs : retweeted_status?.thumbImageURLs
+    }
+    
+    var originalImageURLs:[NSURL]?
+    var largeImgURLs:[NSURL]?{
+        return retweeted_status != nil ? retweeted_status?.originalImageURLs : originalImageURLs
     }
     
     /// 被转发的原微博信息字段，当该微博为转发微博时返回

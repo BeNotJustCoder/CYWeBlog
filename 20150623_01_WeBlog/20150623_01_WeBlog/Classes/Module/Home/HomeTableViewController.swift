@@ -203,11 +203,16 @@ class HomeTableViewController: BaseModuleViewController {
 
 extension HomeTableViewController : WeStatusCellDelegate, UIViewControllerTransitioningDelegate {
     func statusCellDidSelectedPhoto(cell: WeStatusCell, photoIndex: Int) {
-        let vc = PictureScanViewController()
+        if cell.status?.largeImgURLs! == nil {
+            return
+        }
+        
+        let vc = PictureScanViewController(urls: cell.status!.largeImgURLs!, index: photoIndex)
         
         vc.transitioningDelegate = self
-        
+        vc.modalPresentationStyle = UIModalPresentationStyle.Custom
         
         self.presentViewController(vc, animated: true, completion: nil)
     }
+    
 }

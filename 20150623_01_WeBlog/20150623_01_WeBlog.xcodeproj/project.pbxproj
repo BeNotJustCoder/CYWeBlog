@@ -32,6 +32,7 @@
 		BE789FF41B39462300E4C189 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FF31B39462300E4C189 /* MessageTableViewController.swift */; };
 		BE789FF61B39462E00E4C189 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE789FF51B39462E00E4C189 /* ProfileTableViewController.swift */; };
 		BE85DB2D1B3C283500DA7B62 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE85DB2C1B3C283500DA7B62 /* OAuthViewController.swift */; };
+		BE9C91F01B4AA20300322E2E /* PictureViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C91EF1B4AA20300322E2E /* PictureViewCell.swift */; };
 		BEA2FFEE1B4528C300E5D3C0 /* PullRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA2FFED1B4528C300E5D3C0 /* PullRefreshControl.swift */; };
 		BEA9DFA01B3FF22700143EA4 /* HomeTitleNavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA9DF9F1B3FF22700143EA4 /* HomeTitleNavButton.swift */; };
 		BEA9DFA31B400E8500143EA4 /* TitlePopoverViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEA9DFA21B400E8500143EA4 /* TitlePopoverViewController.storyboard */; };
@@ -111,6 +112,7 @@
 		BE789FF31B39462300E4C189 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		BE789FF51B39462E00E4C189 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		BE85DB2C1B3C283500DA7B62 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
+		BE9C91EF1B4AA20300322E2E /* PictureViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewCell.swift; sourceTree = "<group>"; };
 		BEA2FFED1B4528C300E5D3C0 /* PullRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRefreshControl.swift; sourceTree = "<group>"; };
 		BEA9DF9F1B3FF22700143EA4 /* HomeTitleNavButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTitleNavButton.swift; sourceTree = "<group>"; };
 		BEA9DFA21B400E8500143EA4 /* TitlePopoverViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TitlePopoverViewController.storyboard; sourceTree = "<group>"; };
@@ -190,12 +192,13 @@
 			name = QRCode;
 			sourceTree = "<group>";
 		};
-		BE5CFFE21B483494007B33EB /* PictureScan */ = {
+		BE5CFFE21B483494007B33EB /* PictureBrowser */ = {
 			isa = PBXGroup;
 			children = (
 				BE5CFFE31B4834C9007B33EB /* PictureScanViewController.swift */,
+				BE9C91EF1B4AA20300322E2E /* PictureViewCell.swift */,
 			);
-			name = PictureScan;
+			name = PictureBrowser;
 			sourceTree = "<group>";
 		};
 		BE789FA91B3918EE00E4C189 = {
@@ -293,7 +296,7 @@
 		BE789FE71B39441200E4C189 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				BE5CFFE21B483494007B33EB /* PictureScan */,
+				BE5CFFE21B483494007B33EB /* PictureBrowser */,
 				BE0AFE631B439C0300C36337 /* View */,
 				BE5439E51B418479003A26C3 /* QRCode */,
 				BEA9DFA11B400DF600143EA4 /* Menu */,
@@ -594,6 +597,7 @@
 				BE4E31081B3EEEA20092F62F /* WelcomeViewController.swift in Sources */,
 				BE0AFE691B43C20A00C36337 /* UILabel+Ext.swift in Sources */,
 				BEF013A01B42B35900FFF7FA /* User.swift in Sources */,
+				BE9C91F01B4AA20300322E2E /* PictureViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
