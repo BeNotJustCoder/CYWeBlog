@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 
 let WBPictureBrowserCellIdentifier = "WBPictureBrowserCellIdentifier"
 
@@ -63,7 +63,21 @@ class PictureScanViewController: UIViewController {
     
     ///  保存
     func save() {
-        print("保存照片")
+        let indexPath = collectionView.indexPathsForVisibleItems().last
+        let cell = collectionView.cellForItemAtIndexPath(indexPath!) as! PictureViewCell
+        
+        let image = cell.imageView.image!
+        
+        UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
+    }
+    
+    //- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+    func image(image:UIImage, didFinishSavingWithError error:NSError?, contextInfo:AnyObject) {
+        if error != nil {
+            SVProgressHUD.showErrorWithStatus("保存出错")
+        } else {
+            SVProgressHUD.showSuccessWithStatus("保存成功")
+        }
     }
     
     private func prepareCollectionView() {
