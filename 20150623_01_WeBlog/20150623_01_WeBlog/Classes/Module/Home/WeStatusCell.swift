@@ -237,7 +237,7 @@ extension WeStatusCell : UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if pictureDelegate != nil {
-            pictureDelegate!.statusCellDidSelectedPhoto(self, photoIndex: 0)
+            pictureDelegate!.statusCellDidSelectedPhoto(self, photoIndex: indexPath.row)
         }
     }
     

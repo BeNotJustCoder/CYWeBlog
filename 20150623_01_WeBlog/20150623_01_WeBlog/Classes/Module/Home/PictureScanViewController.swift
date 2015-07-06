@@ -36,6 +36,9 @@ class PictureScanViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         prepareCollectionView()
+        
+        let indexPath = NSIndexPath(forItem: currentIndex, inSection: 0)
+        collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredHorizontally, animated: false)
     }
 
     private func setupSubViews() {

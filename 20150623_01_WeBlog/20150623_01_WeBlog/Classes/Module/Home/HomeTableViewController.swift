@@ -202,6 +202,7 @@ class HomeTableViewController: BaseModuleViewController {
 }
 
 extension HomeTableViewController : WeStatusCellDelegate, UIViewControllerTransitioningDelegate {
+    
     func statusCellDidSelectedPhoto(cell: WeStatusCell, photoIndex: Int) {
         if cell.status?.largeImgURLs! == nil {
             return
