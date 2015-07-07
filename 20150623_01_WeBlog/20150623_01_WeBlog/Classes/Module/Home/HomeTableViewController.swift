@@ -198,10 +198,10 @@ class HomeTableViewController: BaseModuleViewController {
     /// 上拉刷新标记
     private var pullRefreshFlag = false
 
-
+    private var isPresented:Bool = false
 }
 
-extension HomeTableViewController : WeStatusCellDelegate, UIViewControllerTransitioningDelegate {
+extension HomeTableViewController : WeStatusCellDelegate, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
     
     func statusCellDidSelectedPhoto(cell: WeStatusCell, photoIndex: Int) {
         if cell.status?.largeImgURLs! == nil {
@@ -214,6 +214,49 @@ extension HomeTableViewController : WeStatusCellDelegate, UIViewControllerTransi
         vc.modalPresentationStyle = UIModalPresentationStyle.Custom
         
         self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        isPresented = true
+        return self
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        isPresented = false
+        return self
+    }
+    
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+        return 1.0
+    }
+    
+    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+        // 1. 获取目标视图
+        let viewKey = isPresented ? UITransitionContextToViewKey : UITransitionContextFromViewKey
+        let targetView = transitionContext.viewForKey(viewKey)
+        
+        if targetView == nil {
+            return
+        }
+        
+        if isPresented {
+            transitionContext.containerView()?.addSubview(targetView!)
+            targetView?.alpha = 0
+            
+            UIView.animateWithDuration(transitionDuration(transitionContext), animations: { () -> Void in
+                targetView?.alpha = 1.0
+                }) { (_) -> Void in
+                    transitionContext.completeTransition(true)
+            }
+        }
+        else {
+            UIView.animateWithDuration(transitionDuration(transitionContext), animations: { () -> Void in
+                targetView!.alpha = 0
+                }, completion: { (_) -> Void in
+                    targetView?.removeFromSuperview()
+                    transitionContext.completeTransition(true)
+            })
+        }
     }
     
 }
